@@ -4,10 +4,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import se.riv.clinicalprocess.logistics.getcarecontactsresponder.v2.GetCareContactsResponseType;
-import se.riv.clinicalprocess.logistics.v2.AuthorType;
 import se.riv.clinicalprocess.logistics.v2.CareContactBodyType;
 import se.riv.clinicalprocess.logistics.v2.CareContactType;
 import se.riv.clinicalprocess.logistics.v2.CareContactUnitType;
+import se.riv.clinicalprocess.logistics.v2.HealthcareProfessionalType;
 import se.riv.clinicalprocess.logistics.v2.PatientIdType;
 import se.riv.clinicalprocess.logistics.v2.PatientSummaryHeaderType;
 import se.skltp.agp.test.producer.TestProducerDb;
@@ -43,12 +43,12 @@ public class CareContactTestProducerDb extends TestProducerDb {
         header.setPatientId(patientId);
         header.setApprovedForPatient(true);
         header.setSourceSystemHSAid(logicalAddress);
-        header.setDocumentTitle("dokumenttitel");
-        header.setDocumentTime("20130302120101");
-        AuthorType author = new AuthorType();
-        author.setCareUnitHSAid(logicalAddress);
-        header.setAuthor(author);
-        header.setDocumentId(businessObjectId);
+        header.setCareContactId(businessObjectId);
+        header.setDocumentTime("20130302120101");        
+        
+        HealthcareProfessionalType author = new HealthcareProfessionalType();
+        author.setHealthcareProfessionalCareGiverHSAid(logicalAddress);
+        header.setAccountableHealthcareProfessional(author);
         header.setSourceSystemHSAid(logicalAddress);
         response.setCareContactHeader(header);
 
@@ -59,9 +59,15 @@ public class CareContactTestProducerDb extends TestProducerDb {
         body.setCareContactTime("20130213121419");
         
         CareContactUnitType unit = new CareContactUnitType();
-        unit.setCareContactUnitAddress("address");
-        unit.setCareContactUnitId("unitId");
-        unit.setCareContactUnitName("name");
+        unit.setCareContactUnitId(logicalAddress);
+        
+        if(TestProducerDb.TEST_LOGICAL_ADDRESS_1.equals(logicalAddress)){
+            unit.setCareContactUnitName("Vårdcentralen Kusten, Kärna");
+        } else if(TestProducerDb.TEST_LOGICAL_ADDRESS_2.equals(logicalAddress)){
+            unit.setCareContactUnitName("Vårdcentralen Molnet");
+        } else {
+            unit.setCareContactUnitName("Vårdcentralen Stacken");
+        }
         
         body.getCareContactUnit().add(unit);
         response.setCareContactBody(body);
