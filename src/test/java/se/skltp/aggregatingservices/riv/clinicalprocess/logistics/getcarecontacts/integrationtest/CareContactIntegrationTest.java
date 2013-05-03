@@ -151,8 +151,8 @@ public class CareContactIntegrationTest extends AbstractAggregateIntegrationTest
         for (int i = 0; i < testData.length; i++) {
             CareContactType responseElement = response.getCareContact().get(i);
             assertEquals(registeredResidentId, responseElement.getCareContactHeader().getPatientId().getId());		
-            assertEquals(testData[i].getExpectedBusinessObjectId(), responseElement.getCareContactHeader().getDocumentId());		
-            assertEquals(testData[i].getExpectedLogicalAddress(), responseElement.getCareContactHeader().getAuthor().getCareUnitHSAid());
+            assertEquals(testData[i].getExpectedBusinessObjectId(), responseElement.getCareContactHeader().getCareContactId());
+            assertEquals(testData[i].getExpectedLogicalAddress(), responseElement.getCareContactHeader().getAccountableHealthcareProfessional().getHealthcareProfessionalCareGiverHSAid());
         }
 
 

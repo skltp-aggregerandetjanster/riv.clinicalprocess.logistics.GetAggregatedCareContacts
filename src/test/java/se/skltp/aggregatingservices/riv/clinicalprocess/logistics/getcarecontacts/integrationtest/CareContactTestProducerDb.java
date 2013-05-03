@@ -30,7 +30,7 @@ public class CareContactTestProducerDb extends TestProducerDb {
     public static final String TEST_REASON_UPDATED = "updated reason";
 
     @Override
-    public Object createResponseItem(String logicalAddress, String registeredResidentId, String businessObjectId) {
+    public Object createResponseItem(String logicalAddress, String registeredResidentId, String businessObjectId, String time) {
 
         log.debug("Created one response item for logical-address {}, registeredResidentId {} and businessObjectId {}",
                 new Object[] {logicalAddress, registeredResidentId, businessObjectId});
@@ -44,7 +44,7 @@ public class CareContactTestProducerDb extends TestProducerDb {
         header.setApprovedForPatient(true);
         header.setSourceSystemHSAid(logicalAddress);
         header.setCareContactId(businessObjectId);
-        header.setDocumentTime("20130302120101");        
+        header.setDocumentTime(time);
         
         HealthcareProfessionalType author = new HealthcareProfessionalType();
         author.setHealthcareProfessionalCareGiverHSAid(logicalAddress);
@@ -56,7 +56,7 @@ public class CareContactTestProducerDb extends TestProducerDb {
         body.setCareContactCode(0);
         body.setCareContactReason("reason");
         body.setCareContactStatus(0);
-        body.setCareContactTime("20130213121419");
+        body.setCareContactTime(time);
         
         CareContactUnitType unit = new CareContactUnitType();
         unit.setCareContactUnitId(logicalAddress);
