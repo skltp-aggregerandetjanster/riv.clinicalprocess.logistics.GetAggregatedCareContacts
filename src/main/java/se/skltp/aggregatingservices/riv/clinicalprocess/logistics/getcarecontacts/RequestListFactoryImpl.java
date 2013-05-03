@@ -23,8 +23,9 @@ import se.skltp.agp.service.api.RequestListFactory;
 public class RequestListFactoryImpl implements RequestListFactory {
 
     private static final Logger log = LoggerFactory.getLogger(RequestListFactoryImpl.class);
-    private static final ThreadSafeSimpleDateFormat df = new ThreadSafeSimpleDateFormat("yyyyMMddHHmmss");
-
+    private static final ThreadSafeSimpleDateFormat dtf = new ThreadSafeSimpleDateFormat("yyyyMMddHHmmss");
+    private static final ThreadSafeSimpleDateFormat df = new ThreadSafeSimpleDateFormat("yyyyMMdd");
+    
     /**
      * Filtrera svarsposter från i EI (ei-engagement) baserat parametrar i GetCareContact requestet (req).
      * Följande villkor måste vara sanna för att en svarspost från EI skall tas med i svaret:
@@ -120,7 +121,7 @@ public class RequestListFactoryImpl implements RequestListFactory {
     protected boolean isBetween(Date from, Date to, String tsStr) {
         try {
             System.err.println("Is " + tsStr + " between " + from + " and " + to);
-            Date ts = df.parse(tsStr);
+            Date ts = dtf.parse(tsStr);
             if (from != null && from.after(ts)) return false;
             if (to != null && to.before(ts)) return false;
             return true;

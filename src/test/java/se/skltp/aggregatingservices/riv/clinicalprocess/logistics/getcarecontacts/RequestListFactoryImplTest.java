@@ -10,8 +10,8 @@ import java.util.List;
 import org.junit.Test;
 
 import se.riv.clinicalprocess.logistics.getcarecontactsresponder.v2.GetCareContactsType;
+import se.riv.clinicalprocess.logistics.v2.DatePeriodType;
 import se.riv.clinicalprocess.logistics.v2.PatientIdType;
-import se.skltp.aggregatingservices.riv.clinicalprocess.logistics.getcarecontacts.RequestListFactoryImpl;
 import se.skltp.agp.riv.itintegration.engagementindex.findcontentresponder.v1.FindContentResponseType;
 import se.skltp.agp.riv.itintegration.engagementindex.findcontentresponder.v1.FindContentType;
 import se.skltp.agp.riv.itintegration.engagementindex.v1.EngagementType;
@@ -132,6 +132,30 @@ public class RequestListFactoryImplTest {
         assertEquals(TestProducerDb.TEST_LOGICAL_ADDRESS_1, request.getCareUnitHSAid().get(0));
     }
 
+    @Test
+    public void createRequestList_timePeriod(){
+        RequestListFactoryImpl requestFactory = new RequestListFactoryImpl();
+        FindContentType fc = createFindContent(RR_ID);       
+        GetCareContactsType getCareDoc = createGetCareContacts(RR_ID, Collections.<String> emptyList());
+        DatePeriodType timePeriod = new DatePeriodType();
+        timePeriod.setStart("20110101");
+        timePeriod.setEnd("20110201");
+        getCareDoc.setTimePeriod(timePeriod);
+        QueryObject queryObject = new QueryObject(fc, getCareDoc);
+        FindContentResponseType findContentResponse = createFindContentResponse(TestProducerDb.TEST_LOGICAL_ADDRESS_1, TestProducerDb.TEST_LOGICAL_ADDRESS_2);
+        findContentResponse.getEngagement().get(0).setMostRecentContent("20110101120101");
+        findContentResponse.getEngagement().get(1).setMostRecentContent("20110301120101");
+        
+        List<Object[]> requestList =  requestFactory.createRequestList(queryObject, findContentResponse);
+        assertEquals(1, requestList.size());
+        
+        assertEquals(TestProducerDb.TEST_LOGICAL_ADDRESS_1, requestList.get(0)[0]);
+        GetCareContactsType request = (GetCareContactsType)requestList.get(0)[1];
+        assertEquals(RR_ID, request.getPatientId().getId());
+        assertEquals(1, request.getCareUnitHSAid().size());
+        assertEquals(TestProducerDb.TEST_LOGICAL_ADDRESS_1, request.getCareUnitHSAid().get(0));
+    }
+    
     private FindContentResponseType createFindContentResponse(String... logicalAddresses){
         FindContentResponseType findContentResponse = new FindContentResponseType();
         for(String logicalAddress: logicalAddresses){
