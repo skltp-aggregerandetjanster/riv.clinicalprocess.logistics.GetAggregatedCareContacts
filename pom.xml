@@ -16,7 +16,7 @@
     <name>GetAggregatedCareContacts</name>
 
     <properties>
-        <skltp.agp.version>1.0.0-RC2</skltp.agp.version>
+        <skltp.agp.version>1.0.0-RC4</skltp.agp.version>
 
         <!-- Properties for generating code from XML Schemas (JAX-WS) -->
         <schema.path>${basedir}/src/main/resources/schemas</schema.path>
@@ -39,9 +39,9 @@
 	<dependencies>	
 
         <dependency>
-		    <groupId>se.skltp.agp</groupId>
-		    <artifactId>agp-core</artifactId>
-		    <version>${skltp.agp.version}</version>
+          <groupId>se.skltp.agp</groupId>
+          <artifactId>agp-core</artifactId>
+          <version>${skltp.agp.version}</version>
         </dependency>
 
         <dependency>
@@ -271,7 +271,7 @@
               <sourceRoot>${basedir}/target/generated/src/main/java</sourceRoot>
               <wsdlOptions>
                 <wsdloption>
-                  <wsdl>${schema.path}/TD_LOGISTICS_LOGISTICS_2_0_RC3/interactions/GetCareContactsInteraction/GetCareContactsInteraction_2.0_RIVTABP21.wsdl</wsdl>
+                  <wsdl>${schema.path}/TD_LOGISTICS_LOGISTICS_2_0_RC5/interactions/GetCareContactsInteraction/GetCareContactsInteraction_2.0_RIVTABP21.wsdl</wsdl>
                     <extraargs>
                       <extraarg>-p</extraarg>
                     <extraarg>

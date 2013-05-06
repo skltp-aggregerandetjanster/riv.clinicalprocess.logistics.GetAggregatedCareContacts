@@ -7,9 +7,11 @@ import se.riv.clinicalprocess.logistics.getcarecontactsresponder.v2.GetCareConta
 import se.riv.clinicalprocess.logistics.v2.CareContactBodyType;
 import se.riv.clinicalprocess.logistics.v2.CareContactType;
 import se.riv.clinicalprocess.logistics.v2.CareContactUnitType;
+import se.riv.clinicalprocess.logistics.v2.DatePeriodType;
 import se.riv.clinicalprocess.logistics.v2.HealthcareProfessionalType;
 import se.riv.clinicalprocess.logistics.v2.PatientIdType;
 import se.riv.clinicalprocess.logistics.v2.PatientSummaryHeaderType;
+import se.riv.clinicalprocess.logistics.v2.TimePeriodType;
 import se.skltp.agp.test.producer.TestProducerDb;
 
 public class CareContactTestProducerDb extends TestProducerDb {
@@ -56,7 +58,6 @@ public class CareContactTestProducerDb extends TestProducerDb {
         body.setCareContactCode(0);
         body.setCareContactReason("reason");
         body.setCareContactStatus(0);
-        body.setCareContactTime(time);
         
         CareContactUnitType unit = new CareContactUnitType();
         unit.setCareContactUnitId(logicalAddress);
