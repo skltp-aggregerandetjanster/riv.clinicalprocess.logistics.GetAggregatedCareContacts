@@ -16,7 +16,7 @@
     <name>GetAggregatedCareContacts</name>
 
     <properties>
-        <skltp.agp.version>1.0.0-RC4</skltp.agp.version>
+        <skltp.agp.version>1.0.0-RC5</skltp.agp.version>
 
         <!-- Properties for generating code from XML Schemas (JAX-WS) -->
         <schema.path>${basedir}/src/main/resources/schemas</schema.path>
