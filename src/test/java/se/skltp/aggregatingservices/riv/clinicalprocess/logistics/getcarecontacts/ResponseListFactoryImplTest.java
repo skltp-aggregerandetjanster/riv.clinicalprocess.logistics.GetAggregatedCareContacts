@@ -2,6 +2,9 @@ package se.skltp.aggregatingservices.riv.clinicalprocess.logistics.getcarecontac
 
 import static org.junit.Assert.assertEquals;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +13,6 @@ import org.soitoolkit.commons.mule.jaxb.JaxbUtil;
 
 import se.riv.clinicalprocess.logistics.getcarecontactsresponder.v2.GetCareContactsResponseType;
 import se.riv.clinicalprocess.logistics.v2.CareContactType;
-import se.skltp.aggregatingservices.riv.clinicalprocess.logistics.getcarecontacts.ResponseListFactoryImpl;
 import se.skltp.agp.riv.interoperability.headers.v1.ProcessingStatusType;
 import se.skltp.agp.riv.itintegration.engagementindex.findcontentresponder.v1.FindContentType;
 import se.skltp.agp.service.api.QueryObject;
@@ -38,5 +40,39 @@ public class ResponseListFactoryImplTest {
         GetCareContactsResponseType getCareDocResponse = new GetCareContactsResponseType();
         getCareDocResponse.getCareContact().add(new CareContactType());
         return getCareDocResponse;
+    }
+    
+
+    @Test
+    public void getXmlFromAggregatedResponse_incorrect() throws Exception{
+
+        InputStream stream = ResponseListFactoryImplTest.class.getResourceAsStream("/GetCareContact-example-incorrect.xml");
+        BufferedReader br = new BufferedReader(new InputStreamReader(stream));
+ 
+        StringBuilder sb = new StringBuilder();
+        String line;
+        while ((line = br.readLine()) != null) {
+            sb.append(line);
+        }
+        
+        GetCareContactsResponseType response = (GetCareContactsResponseType)jaxbUtil.unmarshal(sb.toString());
+        assertEquals(0, response.getCareContact().size());
+    }
+
+    @Test
+    public void getXmlFromAggregatedResponse_correct() throws Exception{
+
+        InputStream stream = ResponseListFactoryImplTest.class.getResourceAsStream("/GetCareContact-example-correct.xml");
+        BufferedReader br = new BufferedReader(new InputStreamReader(stream));
+ 
+        StringBuilder sb = new StringBuilder();
+ 
+        String line;
+        while ((line = br.readLine()) != null) {
+            sb.append(line);
+        }
+        
+        GetCareContactsResponseType response = (GetCareContactsResponseType)jaxbUtil.unmarshal(sb.toString());
+        assertEquals(1, response.getCareContact().size());
     }
 }

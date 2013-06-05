@@ -1,0 +1,31 @@
+<GetCareContactsResponse xmlns="urn:riv:clinicalprocess:logistics:logistics:GetCareContactsResponder:2">
+   <careContact>
+      <careContactHeader xmlns="urn:riv:clinicalprocess:logistics:logistics:2">
+         <careContactId>SE1623210002198611062384ovvtf1</careContactId>
+         <sourceSystemHSAid>SE162321000230-0011</sourceSystemHSAid>
+         <documentTime>20130524155600</documentTime>
+         <patientId>
+            <id>198611062384</id>
+            <type>1.2.752.129.2.1.3.1</type>
+         </patientId>
+         <accountableHealthcareProfessional>
+            <healthcareProfessionalHsaId>SE2321000230-ltmonlun</healthcareProfessionalHsaId>
+            <healthcareProfessionalName>Monica Kokkonen</healthcareProfessionalName>
+            <healthcareProfessionalCareUnitHSAid>SE2321000230-1019</healthcareProfessionalCareUnitHSAid>
+            <healthcareProfessionalCareGiverHSAid>SE2321000230-1016</healthcareProfessionalCareGiverHSAid>
+         </accountableHealthcareProfessional>
+         <accountableHealthcareProfessionalOrgUnit>
+            <careContactOrgUnitHsaId>SE2321000230-LuBo-Kir</careContactOrgUnitHsaId>
+            <careContactOrgUnitName>Kirurgkliniken, LULEÅ, Norrbottens läns landsting NPÖ</careContactOrgUnitName>
+         </accountableHealthcareProfessionalOrgUnit>
+         <approvedForPatient>true</approvedForPatient>
+      </careContactHeader>
+      <careContactBody xmlns="urn:riv:clinicalprocess:logistics:logistics:2">
+         <careContactCode>1</careContactCode>
+         <careContactReason>Buk</careContactReason>
+         <careContactTime>20130524155600</careContactTime>
+         <careContactStatus>1</careContactStatus>
+      </careContactBody>
+   </careContact>
+</GetCareContactsResponse>
+   
