@@ -9,6 +9,7 @@ import se.riv.clinicalprocess.logistics.v2.CareContactType;
 import se.riv.clinicalprocess.logistics.v2.CareContactUnitType;
 import se.riv.clinicalprocess.logistics.v2.DatePeriodType;
 import se.riv.clinicalprocess.logistics.v2.HealthcareProfessionalType;
+import se.riv.clinicalprocess.logistics.v2.OrgUnitType;
 import se.riv.clinicalprocess.logistics.v2.PatientIdType;
 import se.riv.clinicalprocess.logistics.v2.PatientSummaryHeaderType;
 import se.riv.clinicalprocess.logistics.v2.TimePeriodType;
@@ -52,6 +53,18 @@ public class CareContactTestProducerDb extends TestProducerDb {
         author.setHealthcareProfessionalCareGiverHSAid(logicalAddress);
         header.setAccountableHealthcareProfessional(author);
         header.setSourceSystemHSAid(logicalAddress);
+        
+        OrgUnitType orgUnit = new OrgUnitType();
+        orgUnit.setCareContactOrgUnitHsaId(logicalAddress);
+        if(TestProducerDb.TEST_LOGICAL_ADDRESS_1.equals(logicalAddress)){
+            orgUnit.setCareContactOrgUnitName("Vårdcentralen Kusten, Kärna");
+        } else if(TestProducerDb.TEST_LOGICAL_ADDRESS_2.equals(logicalAddress)){
+            orgUnit.setCareContactOrgUnitName("Vårdcentralen Molnet");
+        } else {
+            orgUnit.setCareContactOrgUnitName("Vårdcentralen Stacken");
+        }
+        header.setAccountableHealthcareProfessionalOrgUnit(orgUnit);
+        
         response.setCareContactHeader(header);
 
         CareContactBodyType body = new CareContactBodyType();
@@ -61,14 +74,6 @@ public class CareContactTestProducerDb extends TestProducerDb {
         
         CareContactUnitType unit = new CareContactUnitType();
         unit.setCareContactUnitId(logicalAddress);
-        
-        if(TestProducerDb.TEST_LOGICAL_ADDRESS_1.equals(logicalAddress)){
-            unit.setCareContactUnitName("Vårdcentralen Kusten, Kärna");
-        } else if(TestProducerDb.TEST_LOGICAL_ADDRESS_2.equals(logicalAddress)){
-            unit.setCareContactUnitName("Vårdcentralen Molnet");
-        } else {
-            unit.setCareContactUnitName("Vårdcentralen Stacken");
-        }
         
         body.getCareContactUnit().add(unit);
         response.setCareContactBody(body);
