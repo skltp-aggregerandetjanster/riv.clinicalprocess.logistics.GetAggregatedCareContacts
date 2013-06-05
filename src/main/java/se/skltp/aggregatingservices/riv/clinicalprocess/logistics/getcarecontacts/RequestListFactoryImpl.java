@@ -92,8 +92,13 @@ public class RequestListFactoryImpl implements RequestListFactory {
             if (log.isInfoEnabled()) log.info("Calling source system using logical address {} for subject of care id {}", sourceSystem, originalRequest.getPatientId().getId());
 
             GetCareContactsType request = new GetCareContactsType();
-            request.setPatientId(originalRequest.getPatientId());
-            request.getCareUnitHSAid().addAll(careUnitList);
+            request.setPatientId(originalRequest.getPatientId()); 
+            
+            // Don't set by PDL-enhet (logicalAddress)
+            if(originalRequest.getCareUnitHSAid() != null && originalRequest.getCareUnitHSAid().size() > 0){
+                request.getCareUnitHSAid().addAll(originalRequest.getCareUnitHSAid()); 
+            }
+            
             request.setTimePeriod(originalRequest.getTimePeriod());
 
             Object[] reqArr = new Object[] {sourceSystem, request};
