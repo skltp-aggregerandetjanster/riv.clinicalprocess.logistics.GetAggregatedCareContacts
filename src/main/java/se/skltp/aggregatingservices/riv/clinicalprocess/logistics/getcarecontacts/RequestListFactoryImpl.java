@@ -108,7 +108,13 @@ public class RequestListFactoryImpl implements RequestListFactory {
         }
     }
 
+
+    // Not in use in this service domain
     protected boolean isBetween(Date from, Date to, String tsStr) {
+        return true;
+    }
+    
+/*    protected boolean isBetween(Date from, Date to, String tsStr) {
         try {
             log.debug("Is {} between {} and {}", new Object[]{tsStr, from, to});
             Date ts = dtf.parse(tsStr);
@@ -118,6 +124,5 @@ public class RequestListFactoryImpl implements RequestListFactory {
         } catch (ParseException e) {
             throw new RuntimeException(e);
         }
-    }
-
+    }*/
 }

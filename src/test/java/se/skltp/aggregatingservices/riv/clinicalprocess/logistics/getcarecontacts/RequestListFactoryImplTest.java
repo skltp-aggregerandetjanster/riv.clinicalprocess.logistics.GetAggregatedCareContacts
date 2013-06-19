@@ -7,6 +7,7 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import se.riv.clinicalprocess.logistics.getcarecontactsresponder.v2.GetCareContactsType;
@@ -102,7 +103,7 @@ public class RequestListFactoryImplTest {
         assertEquals(RR_ID, request.getPatientId().getId());
     }
 
-    @Test
+    @Ignore @Test // Not in use in this service domain
     public void createRequestList_timePeriod(){
         RequestListFactoryImpl requestFactory = new RequestListFactoryImpl();
         FindContentType fc = createFindContent(RR_ID);       
