@@ -6,13 +6,10 @@ import org.slf4j.LoggerFactory;
 import se.riv.clinicalprocess.logistics.getcarecontactsresponder.v2.GetCareContactsResponseType;
 import se.riv.clinicalprocess.logistics.v2.CareContactBodyType;
 import se.riv.clinicalprocess.logistics.v2.CareContactType;
-import se.riv.clinicalprocess.logistics.v2.CareContactUnitType;
-import se.riv.clinicalprocess.logistics.v2.DatePeriodType;
 import se.riv.clinicalprocess.logistics.v2.HealthcareProfessionalType;
 import se.riv.clinicalprocess.logistics.v2.OrgUnitType;
-import se.riv.clinicalprocess.logistics.v2.PatientIdType;
 import se.riv.clinicalprocess.logistics.v2.PatientSummaryHeaderType;
-import se.riv.clinicalprocess.logistics.v2.TimePeriodType;
+import se.riv.clinicalprocess.logistics.v2.PersonIdType;
 import se.skltp.agp.test.producer.TestProducerDb;
 
 public class CareContactTestProducerDb extends TestProducerDb {
@@ -40,30 +37,30 @@ public class CareContactTestProducerDb extends TestProducerDb {
 
         CareContactType response = new CareContactType();
         PatientSummaryHeaderType header = new PatientSummaryHeaderType();
-        PatientIdType patientId = new PatientIdType();
+        PersonIdType patientId = new PersonIdType();
         patientId.setId(registeredResidentId);
         patientId.setType("1.2.752.129.2.1.3.1");
         header.setPatientId(patientId);
         header.setApprovedForPatient(true);
-        header.setSourceSystemHSAid(logicalAddress);
-        header.setCareContactId(businessObjectId);
-        header.setDocumentTime(time);
+        header.setSourceSystemHSAId(logicalAddress);
+        header.setDocumentId(businessObjectId);
         
         HealthcareProfessionalType author = new HealthcareProfessionalType();
-        author.setHealthcareProfessionalCareGiverHSAid(logicalAddress);
+        author.setHealthcareProfessionalCareGiverHSAId(logicalAddress);
+        author.setAuthorTime(time);
         header.setAccountableHealthcareProfessional(author);
-        header.setSourceSystemHSAid(logicalAddress);
+        header.setSourceSystemHSAId(logicalAddress);
         
         OrgUnitType orgUnit = new OrgUnitType();
-        orgUnit.setCareContactOrgUnitHsaId(logicalAddress);
+        orgUnit.setOrgUnitHSAId(logicalAddress);
         if(TestProducerDb.TEST_LOGICAL_ADDRESS_1.equals(logicalAddress)){
-            orgUnit.setCareContactOrgUnitName("Vårdcentralen Kusten, Kärna");
+            orgUnit.setOrgUnitName("Vårdcentralen Kusten, Kärna");
         } else if(TestProducerDb.TEST_LOGICAL_ADDRESS_2.equals(logicalAddress)){
-            orgUnit.setCareContactOrgUnitName("Vårdcentralen Molnet");
+            orgUnit.setOrgUnitName("Vårdcentralen Molnet");
         } else {
-            orgUnit.setCareContactOrgUnitName("Vårdcentralen Stacken");
+            orgUnit.setOrgUnitName("Vårdcentralen Stacken");
         }
-        header.setAccountableHealthcareProfessionalOrgUnit(orgUnit);
+        header.getAccountableHealthcareProfessional().setHealthcareProfessionalOrgUnit(orgUnit);
         
         response.setCareContactHeader(header);
 
@@ -72,10 +69,10 @@ public class CareContactTestProducerDb extends TestProducerDb {
         body.setCareContactReason("reason");
         body.setCareContactStatus(0);
         
-        CareContactUnitType unit = new CareContactUnitType();
-        unit.setCareContactUnitId(logicalAddress);
+        OrgUnitType unit = new OrgUnitType();
+        unit.setOrgUnitHSAId(logicalAddress);
         
-        body.getCareContactUnit().add(unit);
+        body.setCareContactOrgUnit(unit);
         response.setCareContactBody(body);
         return response;
     }

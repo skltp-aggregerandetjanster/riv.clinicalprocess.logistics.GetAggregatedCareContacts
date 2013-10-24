@@ -80,8 +80,8 @@ public class RequestListFactoryImpl implements RequestListFactory {
             GetCareContactsType request = new GetCareContactsType();
             request.setPatientId(originalRequest.getPatientId()); 
             
-            if(originalRequest.getCareUnitHSAid() != null && originalRequest.getCareUnitHSAid().size() > 0){
-                request.getCareUnitHSAid().addAll(originalRequest.getCareUnitHSAid()); 
+            if(originalRequest.getCareUnitHSAId() != null && originalRequest.getCareUnitHSAId().size() > 0){
+                request.getCareUnitHSAId().addAll(originalRequest.getCareUnitHSAId());
             }
             
             request.setTimePeriod(originalRequest.getTimePeriod());

@@ -12,7 +12,7 @@ import org.junit.Test;
 
 import se.riv.clinicalprocess.logistics.getcarecontactsresponder.v2.GetCareContactsType;
 import se.riv.clinicalprocess.logistics.v2.DatePeriodType;
-import se.riv.clinicalprocess.logistics.v2.PatientIdType;
+import se.riv.clinicalprocess.logistics.v2.PersonIdType;
 import se.skltp.agp.riv.itintegration.engagementindex.findcontentresponder.v1.FindContentResponseType;
 import se.skltp.agp.riv.itintegration.engagementindex.findcontentresponder.v1.FindContentType;
 import se.skltp.agp.riv.itintegration.engagementindex.v1.EngagementType;
@@ -143,10 +143,10 @@ public class RequestListFactoryImplTest {
     
     private GetCareContactsType createGetCareContacts(String id, List<String> careUnits){
         GetCareContactsType getCareContact = new GetCareContactsType();
-        PatientIdType patientId = new PatientIdType();
+        PersonIdType patientId = new PersonIdType();
         patientId.setId(RR_ID);
         getCareContact.setPatientId(patientId);
-        getCareContact.getCareUnitHSAid().addAll(careUnits);
+        getCareContact.getCareUnitHSAId().addAll(careUnits);
         return getCareContact;
     }
     

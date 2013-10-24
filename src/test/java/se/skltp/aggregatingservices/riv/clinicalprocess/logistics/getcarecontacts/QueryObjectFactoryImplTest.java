@@ -14,7 +14,7 @@ import org.w3c.dom.Document;
 
 import se.riv.clinicalprocess.logistics.getcarecontactsresponder.v2.GetCareContactsType;
 import se.riv.clinicalprocess.logistics.getcarecontactsresponder.v2.ObjectFactory;
-import se.riv.clinicalprocess.logistics.v2.PatientIdType;
+import se.riv.clinicalprocess.logistics.v2.PersonIdType;
 import se.skltp.agp.service.api.QueryObject;
 
 public class QueryObjectFactoryImplTest {
@@ -35,7 +35,7 @@ public class QueryObjectFactoryImplTest {
     @Test
     public void createQueryObject() throws Exception{
         GetCareContactsType getCareDoc = new GetCareContactsType();
-        PatientIdType patientId = new PatientIdType();
+        PersonIdType patientId = new PersonIdType();
         patientId.setId(RR_ID);
         getCareDoc.setPatientId(patientId);
         
@@ -52,10 +52,10 @@ public class QueryObjectFactoryImplTest {
     @Test
     public void createQueryObject_with_source_system() throws Exception{
         GetCareContactsType getCareDoc = new GetCareContactsType();
-        PatientIdType patientId = new PatientIdType();
+        PersonIdType patientId = new PersonIdType();
         patientId.setId(RR_ID);
         getCareDoc.setPatientId(patientId);
-        getCareDoc.setSourceSystemHSAid(SOURCE_SYSTEM);
+        getCareDoc.setSourceSystemHSAId(SOURCE_SYSTEM);
         
         Document doc = createDocument(getCareDoc);
         QueryObject queryObj = objectFactory.createQueryObject(doc);

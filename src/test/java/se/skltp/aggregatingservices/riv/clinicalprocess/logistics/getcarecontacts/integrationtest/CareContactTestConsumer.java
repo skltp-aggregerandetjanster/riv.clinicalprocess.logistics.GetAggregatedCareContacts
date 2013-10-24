@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 import se.riv.clinicalprocess.logistics.getcarecontactsrequest.v2.GetCareContactsResponderInterface;
 import se.riv.clinicalprocess.logistics.getcarecontactsresponder.v2.GetCareContactsResponseType;
 import se.riv.clinicalprocess.logistics.getcarecontactsresponder.v2.GetCareContactsType;
-import se.riv.clinicalprocess.logistics.v2.PatientIdType;
+import se.riv.clinicalprocess.logistics.v2.PersonIdType;
 import se.skltp.aggregatingservices.CareContactMuleServer;
 import se.skltp.agp.riv.interoperability.headers.v1.ProcessingStatusType;
 import se.skltp.agp.test.consumer.AbstractTestConsumer;
@@ -42,7 +42,7 @@ public class CareContactTestConsumer extends AbstractTestConsumer<GetCareContact
         log.debug("Calling GetCareContact-soap-service with id = {}", id);
 
         GetCareContactsType request = new GetCareContactsType();
-        PatientIdType patientId = new PatientIdType();
+        PersonIdType patientId = new PersonIdType();
         patientId.setId(id);
         request.setPatientId(patientId);
 

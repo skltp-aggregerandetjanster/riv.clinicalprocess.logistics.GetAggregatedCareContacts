@@ -271,7 +271,7 @@
               <sourceRoot>${basedir}/target/generated/src/main/java</sourceRoot>
               <wsdlOptions>
                 <wsdloption>
-                  <wsdl>${schema.path}/TD_LOGISTICS_LOGISTICS_2_0_RC5/interactions/GetCareContactsInteraction/GetCareContactsInteraction_2.0_RIVTABP21.wsdl</wsdl>
+                  <wsdl>${schema.path}/TD_LOGISTICS_LOGISTICS_2_0_RC7/interactions/GetCareContactsInteraction/GetCareContactsInteraction_2.0_RIVTABP21.wsdl</wsdl>
                     <extraargs>
                       <extraarg>-p</extraarg>
                     <extraarg>
