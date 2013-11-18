@@ -117,7 +117,17 @@
             </resource>
         </resources>
 
-		<plugins>   
+		<plugins>
+		
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+		  <version>2.5.1</version>
+        <configuration>
+          <source>1.6</source>
+          <target>1.6</target>
+        </configuration>
+      </plugin>
+      		
             <plugin>
                 <!-- Add mule-nature to the eclipse-.project-file -->
                 <artifactId>maven-eclipse-plugin</artifactId>
@@ -268,10 +278,12 @@
             <id>generate-sources</id>
             <phase>generate-sources</phase>
             <configuration>
+				<fork>once</fork>
+				<additionalJvmArgs>-Dfile.encoding=UTF-8</additionalJvmArgs>
               <sourceRoot>${basedir}/target/generated/src/main/java</sourceRoot>
               <wsdlOptions>
                 <wsdloption>
-                  <wsdl>${schema.path}/TD_LOGISTICS_LOGISTICS_2_0_RC7/interactions/GetCareContactsInteraction/GetCareContactsInteraction_2.0_RIVTABP21.wsdl</wsdl>
+                  <wsdl>${schema.path}/TD_LOGISTICS_LOGISTICS_2_0_RC7c/interactions/GetCareContactsInteraction/GetCareContactsInteraction_2.0_RIVTABP21.wsdl</wsdl>
                     <extraargs>
                       <extraarg>-p</extraarg>
                     <extraarg>
