@@ -6,7 +6,7 @@
     <parent>
         <groupId>org.soitoolkit.commons.poms</groupId>
         <artifactId>soitoolkit-default-parent</artifactId>
-        <version>0.6.1-M2</version>
+        <version>0.6.1</version>
     </parent>
 
     <groupId>se.skltp.aggregatingservices.clinicalprocess.logistics.logistics</groupId>
@@ -16,7 +16,7 @@
     <name>GetAggregatedCareContacts</name>
 
     <properties>
-        <skltp.agp.version>1.2.0</skltp.agp.version>
+        <skltp.agp.version>1.2.1-RC1</skltp.agp.version>
 
         <!-- Properties for generating code from XML Schemas (JAX-WS) -->
         <schema.path>${basedir}/src/main/resources/schemas</schema.path>

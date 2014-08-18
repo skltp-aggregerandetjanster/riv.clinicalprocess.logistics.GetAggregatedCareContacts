@@ -88,6 +88,12 @@
 	<logger name="com.mulesoft.mule.cache">
 		<level value="DEBUG" />
 	</logger>
+	
+	<!-- Monitoring logs to separate log file, additivity makes sure not logged twice -->
+    <logger name="se.skltp.agp.monitoring" additivity="false">
+        <level value="DEBUG" />
+        <appender-ref ref="CONSOLE"/>
+    </logger>
 
 	
 	<root>
