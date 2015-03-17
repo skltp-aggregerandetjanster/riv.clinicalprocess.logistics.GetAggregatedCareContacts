@@ -16,22 +16,23 @@ DON'T CHANGE THE CONTENT OF THIS COMMENT UNLESS YOU REALLY KNOW WHAT YOU ARE DOI
         <version>0.6.1</version>
     </parent>
 
-  	<groupId>se.skltp.aggregatingservices.clinicalprocess.logistics.logistics</groupId>
+  	<groupId>se.skltp.aggregatingservices.riv.clinicalprocess.logistics.logistics</groupId>
 		<artifactId>GetAggregatedCareContacts-parent</artifactId>
 		<version>1.1.2-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>GetAggregatedCareContacts-parent</name>
 
 		<scm>
-			<url>https://github.com/skltp-aggregerandetjanster/riv.clinicalprocess.logistics.GetAggregatedCareContacts</url>
-			<connection>scm:git:git://github.com/skltp-aggregerandetjanster/riv.clinicalprocess.logistics.GetAggregatedCareContacts.git</connection>
-			<developerConnection>scm:git:git://github.com/skltp-aggregerandetjanster/riv.clinicalprocess.logistics.GetAggregatedCareContacts.git</developerConnection>
+			<url>https://github.com/skltp-aggregerandetjanster/riv.clinicalprocess.logistics.logistics.GetAggregatedCareContacts</url>
+			<connection>scm:git:git://github.com/skltp-aggregerandetjanster/riv.clinicalprocess.logistics.logistics.GetAggregatedCareContacts.git</connection>
+			<developerConnection>scm:git:git://github.com/skltp-aggregerandetjanster/riv.clinicalprocess.logistics.logistics.GetAggregatedCareContacts.git</developerConnection>
 			<tag>HEAD</tag>
 		</scm>
 
     <modules>
       <module>GetAggregatedCareContacts</module>
       <module>GetAggregatedCareContacts-teststub</module>
+			<module>GetAggregatedCareContacts-schemas</module>
     </modules>
 
 		<build>

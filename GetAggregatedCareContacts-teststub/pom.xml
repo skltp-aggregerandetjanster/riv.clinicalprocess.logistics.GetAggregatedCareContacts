@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 		<parent>
-			<groupId>se.skltp.aggregatingservices.clinicalprocess.logistics.logistics</groupId>
+			<groupId>se.skltp.aggregatingservices.riv.clinicalprocess.logistics.logistics</groupId>
 			<artifactId>GetAggregatedCareContacts-parent</artifactId>
 			<version>1.1.2-SNAPSHOT</version>
 		</parent>
@@ -14,22 +14,22 @@
     <name>GetAggregatedCareContacts-teststub</name>
 
      <properties>
-        <skltp.agp.version>1.2.1</skltp.agp.version>
+        <skltp.agp.version>1.2.3</skltp.agp.version>
         <GetAggregatedCareContacts.version>${project.version}</GetAggregatedCareContacts.version>
     </properties>
 
 	<dependencies>
 	  <!-- dependencies to the integration component that contains the services to stub -->
 	    <dependency>
-	    	<groupId>se.skltp.aggregatingservices.clinicalprocess.logistics.logistics</groupId>
+	    	<groupId>se.skltp.aggregatingservices.riv.clinicalprocess.logistics.logistics</groupId>
 	    	<artifactId>GetAggregatedCareContacts</artifactId>
-	    	<version>${GetAggregatedCareContacts.version}</version>
+	    	<version>${project.version}</version>
 	    	<type>test-jar</type>
 	    </dependency>
 	    <dependency>
-	    	<groupId>se.skltp.aggregatingservices.clinicalprocess.logistics.logistics</groupId>
+	    	<groupId>se.skltp.aggregatingservices.riv.clinicalprocess.logistics.logistics</groupId>
 	    	<artifactId>GetAggregatedCareContacts</artifactId>
-	    	<version>${GetAggregatedCareContacts.version}</version>
+	    	<version>${project.version}</version>
 	    	<classifier>core</classifier>
 	    </dependency>
        <dependency>

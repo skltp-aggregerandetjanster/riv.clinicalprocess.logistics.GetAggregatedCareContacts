@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
     <parent>
-			<groupId>se.skltp.aggregatingservices.clinicalprocess.logistics.logistics</groupId>
+			<groupId>se.skltp.aggregatingservices.riv.clinicalprocess.logistics.logistics</groupId>
 			<artifactId>GetAggregatedCareContacts-parent</artifactId>
 			<version>1.1.2-SNAPSHOT</version>
     </parent>
@@ -14,8 +14,7 @@
     <name>GetAggregatedCareContacts</name>
 
     <properties>
-        <skltp.agp.version>1.2.1</skltp.agp.version>
-
+        <skltp.agp.version>1.2.3</skltp.agp.version>
         <!-- Properties for generating code from XML Schemas (JAX-WS) -->
         <schema.path>${basedir}/src/main/resources/schemas</schema.path>
         <cxf.version>2.5.1</cxf.version>
@@ -28,7 +27,12 @@
       </pluginRepository>
     </pluginRepositories>
 
-	<dependencies>
+    <dependencies>
+      <dependency>
+      <groupId>se.skltp.aggregatingservices.riv.clinicalprocess.logistics.logistics</groupId>
+      <artifactId>GetAggregatedCareContacts-schemas</artifactId>
+			<version>${project.version}</version>
+    </dependency>
 
         <dependency>
           <groupId>se.skltp.agp</groupId>
@@ -110,15 +114,6 @@
         </resources>
 
 		<plugins>
-
-      <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-		  <version>2.5.1</version>
-        <configuration>
-          <source>1.6</source>
-          <target>1.6</target>
-        </configuration>
-      </plugin>
 
             <plugin>
                 <!-- Add mule-nature to the eclipse-.project-file -->
@@ -261,52 +256,6 @@
 			    </executions>
 			</plugin>
 
-      <plugin>
-        <groupId>org.apache.cxf</groupId>
-        <artifactId>cxf-codegen-plugin</artifactId>
-        <version>${cxf.version}</version>
-        <executions>
-          <execution>
-            <id>generate-sources</id>
-            <phase>generate-sources</phase>
-            <configuration>
-				<fork>once</fork>
-				<additionalJvmArgs>-Dfile.encoding=UTF-8</additionalJvmArgs>
-              <sourceRoot>${basedir}/target/generated/src/main/java</sourceRoot>
-              <wsdlOptions>
-                <wsdloption>
-                  <wsdl>${schema.path}/Clinicalpocess_logistics_logistics_2.0.0/interactions/GetCareContactsInteraction/GetCareContactsInteraction_2.0_RIVTABP21.wsdl</wsdl>
-                    <extraargs>
-                      <extraarg>-p</extraarg>
-                    <extraarg>
-                      urn:riv:clinicalprocess:logistics:logistics:GetCareContacts:2:rivtabp21=se.riv.clinicalprocess.logistics.getcarecontactsrequest.v2
-                    </extraarg>
-                    <extraarg>-p</extraarg>
-                    <extraarg>
-                      urn:riv:clinicalprocess:logistics:logistics:GetCareContactsResponder:2=se.riv.clinicalprocess.logistics.getcarecontactsresponder.v2
-                    </extraarg>
-                    <extraarg>-p</extraarg>
-                    <extraarg>
-                      urn:riv:clinicalprocess:logistics:logistics:2=se.riv.clinicalprocess.logistics.v2
-                    </extraarg>
-                    <extraarg>-p</extraarg>
-                    <extraarg>
-                      urn:riv:clinicalprocess:logistics:logistics:enums:2=se.riv.clinicalprocess.logistics.enums.v2
-                    </extraarg>
-                    <extraarg>-p</extraarg>
-                    <extraarg>
-                      urn:riv:itintegration:registry:1=se.riv.itintegration.registry.v1
-                    </extraarg>
-                  </extraargs>
-                </wsdloption>
-              </wsdlOptions>
-            </configuration>
-            <goals>
-              <goal>wsdl2java</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
 
       </plugins>
 

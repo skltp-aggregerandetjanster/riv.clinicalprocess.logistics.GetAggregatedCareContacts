@@ -16,7 +16,7 @@
         <param name="MaxBackupIndex" value="3" />
         <layout class="org.apache.log4j.PatternLayout">
             <param name="ConversionPattern" value="%d %-5p %-30c - %m%n" />
-        </layout> 
+        </layout>
     </appender>
 
 	<!--
@@ -49,7 +49,7 @@
 	<logger name="org.mule.DefaultMuleContext">
 		<level value="INFO" />
 	</logger>
-	
+
     <!-- Message logging using the old Mule <logger/> - element -->
     <logger name="org.mule.api.processor.LoggerMessageProcessor">
         <level value="INFO" />
@@ -63,8 +63,8 @@
 	<logger name="org.soitoolkit.commons">
 		<level value="INFO" />
 	</logger>
-	
-	<logger name="se.skl.tp.aggregatingservices.clinicalprocess.logistics.getaggregatedcarecontact">
+
+	<logger name="se.skl.tp.aggregatingservices.riv.clinicalprocess.logistics.logistics.getaggregatedcarecontact">
 		<level value="INFO" />
 	</logger>
 
@@ -72,10 +72,10 @@
 	<logger name="org.soitoolkit.commons.mule.messageLogger">
 		<level value="INFO" />
 	</logger>
-	
+
 	<root>
 		<priority value="WARN" />
-		
+
 		<appender-ref ref="CONSOLE"/>
 		<appender-ref ref="ROLLINGFILE"/>
 	</root>
