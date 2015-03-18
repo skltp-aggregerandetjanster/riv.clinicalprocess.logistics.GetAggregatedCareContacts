@@ -1,5 +1,4 @@
-package se.skl.tp.aggregatingservices.clinicalprocess.logistics.logistics.getaggregatedcarecontact;
-
+package se.skltp.aggregatingservices.riv.clinicalprocess.logistics.logistics.getaggregatedcarecontact;
 
 import org.soitoolkit.commons.mule.test.StandaloneMuleServer;
 
@@ -8,18 +7,14 @@ import org.soitoolkit.commons.mule.util.RecursiveResourceBundle;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+public class GetAggregatedCareContactsTeststubMuleServer {
 
-public class GetAggregatedCareContactTeststubMuleServer {
+	public static final String MULE_SERVER_ID = "GetAggregatedCareContacts-teststub";
 
-
-	public static final String MULE_SERVER_ID   = "GetAggregatedCareContact-teststub";
-
-
-	private static final Logger logger = LoggerFactory.getLogger(GetAggregatedCareContactTeststubMuleServer.class);
-    private static final RecursiveResourceBundle rb = new RecursiveResourceBundle("GetAggregatedCareContact-config");
+	private static final Logger logger = LoggerFactory.getLogger(GetAggregatedCareContactsTeststubMuleServer.class);
+    private static final RecursiveResourceBundle rb = new RecursiveResourceBundle("GetAggregatedCareContacts-config");
 
 	public static void main(String[] args) throws Exception {
-
 
         // Configure the mule-server
         // Note: do not activate the "soitoolkit-teststubs" profile here since it sets a
@@ -43,6 +38,5 @@ public class GetAggregatedCareContactTeststubMuleServer {
 
 	    logger.info("URL: {}", url);
     	return url;
-
     }
 }

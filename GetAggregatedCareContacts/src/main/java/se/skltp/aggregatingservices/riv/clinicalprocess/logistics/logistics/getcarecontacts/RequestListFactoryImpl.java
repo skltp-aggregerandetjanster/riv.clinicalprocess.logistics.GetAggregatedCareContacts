@@ -20,7 +20,6 @@ import se.skltp.agp.service.api.RequestListFactory;
 public class RequestListFactoryImpl implements RequestListFactory {
 
     private static final Logger log = LoggerFactory.getLogger(RequestListFactoryImpl.class);
-    private static final ThreadSafeSimpleDateFormat dtf = new ThreadSafeSimpleDateFormat("yyyyMMddHHmmss");
     private static final ThreadSafeSimpleDateFormat df = new ThreadSafeSimpleDateFormat("yyyyMMdd");
 
     /**
@@ -29,14 +28,13 @@ public class RequestListFactoryImpl implements RequestListFactory {
      *
      * 1. req.timePeriod.start <= ei-engagement.mostRecentContent <= req.timePeriod.end
      *
-     *
      * Ett anrop görs per funnet sourceSystem med följande värden i anropet:
      *
      * 1. logicalAddress = sourceSystem (systemadressering)
-     * 2. subjectOfCareId = orginal-request.subjectOfCareId
-     * 3. careUnitId = orginal-request.careUnitId
-     * 4. fromDate = orginal-request.fromDate
-     * 5. toDate = orginal-request.toDate
+     * 2. subjectOfCareId = original-request.subjectOfCareId
+     * 3. careUnitId = original-request.careUnitId
+     * 4. fromDate = original-request.fromDate
+     * 5. toDate = original-request.toDate
      */
     @Override
     public List<Object[]> createRequestList(QueryObject qo, FindContentResponseType src) {
@@ -45,7 +43,7 @@ public class RequestListFactoryImpl implements RequestListFactory {
         Date reqFrom = null;
         Date reqTo = null;
 
-        if(originalRequest.getTimePeriod() != null){
+        if (originalRequest.getTimePeriod() != null){
             reqFrom = parseTs(originalRequest.getTimePeriod().getStart());
             reqTo   = parseTs(originalRequest.getTimePeriod().getEnd());
         }
@@ -55,13 +53,10 @@ public class RequestListFactoryImpl implements RequestListFactory {
 
         log.info("Got {} hits in the engagement index", inEngagements.size());
 
+        // List of source systems that contain engagements within the time period
         Set<String> sourceSystems = new HashSet<String>();
-
         for (EngagementType inEng : inEngagements) {
-
-            // Filter
             if (isBetween(reqFrom, reqTo, inEng.getMostRecentContent())) {
-
                 log.info("Add SS: {}", inEng.getSourceSystem());
                 // Add source system
                 sourceSystems.add(inEng.getSourceSystem());
@@ -69,18 +64,17 @@ public class RequestListFactoryImpl implements RequestListFactory {
         }
 
         // Prepare the result of the transformation as a list of request-payloads,
-        // one payload for each unique logical-address (e.g. source system since we are using systemaddressing),
+        // one payload for each unique logical-address (e.g. source system since we are using system addressing),
         // each payload built up as an object-array according to the JAX-WS signature for the method in the service interface
         List<Object[]> reqList = new ArrayList<Object[]>();
 
         for (String sourceSystem: sourceSystems) {
-
             log.info("Calling source system using logical address {} for subject of care id {}", sourceSystem, originalRequest.getPatientId().getId());
 
             GetCareContactsType request = new GetCareContactsType();
             request.setPatientId(originalRequest.getPatientId());
 
-            if(originalRequest.getCareUnitHSAId() != null && originalRequest.getCareUnitHSAId().size() > 0){
+            if (originalRequest.getCareUnitHSAId() != null && originalRequest.getCareUnitHSAId().size() > 0){
                 request.getCareUnitHSAId().addAll(originalRequest.getCareUnitHSAId());
             }
 
@@ -90,9 +84,7 @@ public class RequestListFactoryImpl implements RequestListFactory {
 
             reqList.add(reqArr);
         }
-
         log.debug("Transformed payload: {}", reqList);
-
         return reqList;
     }
 

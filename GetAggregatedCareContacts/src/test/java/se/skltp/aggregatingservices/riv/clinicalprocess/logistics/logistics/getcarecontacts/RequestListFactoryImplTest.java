@@ -22,7 +22,7 @@ import se.skltp.agp.test.producer.TestProducerDb;
 public class RequestListFactoryImplTest {
 
     private static final String CATEGORIZATION = "voo";
-    private static final String SERVICE_DOMAIN = "riv:clinicalprocess:healthcond:description";
+    private static final String SERVICE_DOMAIN = "riv:clinicalprocess:logistics:logistics";
     private static final String RR_ID = "1212121212";
 
     private static final String SOURCE_SYSTEM_1 = "SS1";

@@ -3,7 +3,7 @@ package se.skltp.aggregatingservices.riv.clinicalprocess.logistics.logistics.get
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
-import static se.skltp.aggregatingservices.CareContactMuleServer.getAddress;
+import static se.skltp.aggregatingservices.CareContactsMuleServer.getAddress;
 import static se.skltp.agp.riv.interoperability.headers.v1.CausingAgentEnum.VIRTUALIZATION_PLATFORM;
 import static se.skltp.agp.test.consumer.AbstractTestConsumer.SAMPLE_ORIGINAL_CONSUMER_HSAID;
 import static se.skltp.agp.test.consumer.AbstractTestConsumer.SAMPLE_SENDER_ID;
@@ -40,7 +40,7 @@ import se.skltp.agp.test.producer.TestProducerLogger;
 
 public class CareContactIntegrationTest extends AbstractAggregateIntegrationTest {
 
-    private static final Logger log = LoggerFactory.getLogger(CareContactIntegrationTest.class);
+    protected static final Logger log = LoggerFactory.getLogger(CareContactIntegrationTest.class);
 
     private static final RecursiveResourceBundle rb = new RecursiveResourceBundle("GetAggregatedCareContacts-config");
     private static final String SKLTP_HSA_ID = rb.getString("SKLTP_HSA_ID");
