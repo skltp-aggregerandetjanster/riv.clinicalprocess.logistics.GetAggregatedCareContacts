@@ -11,7 +11,7 @@ import riv.clinicalprocess.logistics.logistics.getcarecontactsrequest.v2.GetCare
 import riv.clinicalprocess.logistics.logistics.getcarecontactsresponder.v2.GetCareContactsResponseType;
 import riv.clinicalprocess.logistics.logistics.getcarecontactsresponder.v2.GetCareContactsType;
 import riv.clinicalprocess.logistics.logistics.v2.PersonIdType;
-import se.skltp.aggregatingservices.CareContactMuleServer;
+import se.skltp.aggregatingservices.CareContactsMuleServer;
 import se.skltp.agp.riv.interoperability.headers.v1.ProcessingStatusType;
 import se.skltp.agp.test.consumer.AbstractTestConsumer;
 import se.skltp.agp.test.consumer.SoapHeaderCxfInterceptor;
@@ -21,8 +21,8 @@ public class CareContactTestConsumer extends AbstractTestConsumer<GetCareContact
     private static final Logger log = LoggerFactory.getLogger(CareContactTestConsumer.class);
 
     public static void main(String[] args) {
-        log.info("URL: " + CareContactMuleServer.getAddress("SERVICE_INBOUND_URL"));
-        String serviceAddress = CareContactMuleServer.getAddress("SERVICE_INBOUND_URL");
+        log.info("URL: " + CareContactsMuleServer.getAddress("SERVICE_INBOUND_URL"));
+        String serviceAddress = CareContactsMuleServer.getAddress("SERVICE_INBOUND_URL");
         String personnummer = TEST_RR_ID_ONE_HIT;
 
         CareContactTestConsumer consumer = new CareContactTestConsumer(serviceAddress, SAMPLE_SENDER_ID, SAMPLE_ORIGINAL_CONSUMER_HSAID);

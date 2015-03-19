@@ -64,7 +64,7 @@
 		<level value="INFO" />
 	</logger>
 
-	<logger name="se.skl.tp.aggregatingservices.riv.clinicalprocess.logistics.logistics.getaggregatedcarecontact">
+	<logger name="se.skltp.aggregatingservices.riv.clinicalprocess.logistics.logistics.getaggregatedcarecontact">
 		<level value="INFO" />
 	</logger>
 

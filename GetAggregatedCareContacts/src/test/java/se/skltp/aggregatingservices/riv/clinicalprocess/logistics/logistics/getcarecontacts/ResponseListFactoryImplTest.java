@@ -46,7 +46,7 @@ public class ResponseListFactoryImplTest {
     @Test
     public void getXmlFromAggregatedResponse_incorrect() throws Exception{
 
-        InputStream stream = ResponseListFactoryImplTest.class.getResourceAsStream("/GetCareContact-example-incorrect.xml");
+        InputStream stream = ResponseListFactoryImplTest.class.getResourceAsStream("/GetCareContactsResponse-example-incorrect.xml");
         BufferedReader br = new BufferedReader(new InputStreamReader(stream));
 
         StringBuilder sb = new StringBuilder();
@@ -62,7 +62,7 @@ public class ResponseListFactoryImplTest {
     @Test
     public void getXmlFromAggregatedResponse_correct() throws Exception{
 
-        InputStream stream = ResponseListFactoryImplTest.class.getResourceAsStream("/GetCareContact-example-correct.xml");
+        InputStream stream = ResponseListFactoryImplTest.class.getResourceAsStream("/GetCareContactsResponse-example-correct.xml");
         BufferedReader br = new BufferedReader(new InputStreamReader(stream));
 
         StringBuilder sb = new StringBuilder();
