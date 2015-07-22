@@ -4,7 +4,7 @@ trait CommonParameters {
   val serviceName:String     = "CareContacts"
   val urn:String             = "urn:riv:clinicalprocess:logistics:logistics:GetCareContactsResponder:2"
   val responseElement:String = "GetCareContactsResponse"
-  val responseItem:String    = "medicationMedicalRecord"
+  val responseItem:String    = "careContact"
   var baseUrl:String         = if (System.getProperty("baseUrl") != null && !System.getProperty("baseUrl").isEmpty()) {
                                    System.getProperty("baseUrl")
                                } else {
