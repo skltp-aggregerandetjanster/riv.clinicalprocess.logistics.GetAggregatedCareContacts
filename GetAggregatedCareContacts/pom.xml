@@ -6,7 +6,7 @@
     <parent>
 			<groupId>se.skltp.aggregatingservices.riv.clinicalprocess.logistics.logistics</groupId>
 			<artifactId>GetAggregatedCareContacts-parent</artifactId>
-			<version>1.1.3</version>
+			<version>1.1.4-RC1-SNAPSHOT</version>
     </parent>
 
     <artifactId>GetAggregatedCareContacts</artifactId>
@@ -14,7 +14,7 @@
     <name>GetAggregatedCareContacts</name>
 
     <properties>
-        <skltp.agp.version>1.2.3</skltp.agp.version>
+        <skltp.agp.version>1.3.1</skltp.agp.version>
         <!-- Properties for generating code from XML Schemas (JAX-WS) -->
         <schema.path>${basedir}/src/main/resources/schemas</schema.path>
         <cxf.version>2.5.1</cxf.version>

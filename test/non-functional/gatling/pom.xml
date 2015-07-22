@@ -1,0 +1,115 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+<!--
+
+# PingForConfiguration - default:33.33.33.33:8081 (http)
+mvn gatling:execute -PPingForConfiguration -DserviceLowercase=getaggregatedcarecontacts
+mvn gatling:execute -PPingForConfiguration -DbaseUrl=http://ine-dit-app02.sth.basefarm.net:9002/agp/getaggregatedcarecontacts/itintegration/monitoring/PingForConfiguration/1/rivtabp21
+mvn gatling:execute -PPingForConfiguration -DbaseUrl=http://ine-sit-app03.sth.basefarm.net:9002/agp/getaggregatedcarecontacts/itintegration/monitoring/PingForConfiguration/1/rivtabp21
+
+# WarmUp - default:33.33.33.33:8081 (http)
+mvn gatling:execute -PWarmUp
+mvn gatling:execute -PWarmUp -DbaseUrl=http://ine-dit-app02.sth.basefarm.net:9002/GetAggregatedCareContacts/service/v2
+mvn gatling:execute -PWarmUp -DbaseUrl=http://ine-sit-app03.sth.basefarm.net:9002/GetAggregatedCareContacts/service/v2
+
+# Smoke - default:ine-sit-app03 (http)
+mvn gatling:execute -PSmoke
+mvn gatling:execute -PSmoke -DbaseUrl=http://33.33.33.33:8081/GetAggregatedCareContacts/service/v2
+mvn gatling:execute -PSmoke -DbaseUrl=http://ine-dit-app02.sth.basefarm.net:9002/GetAggregatedCareContacts/service/v2
+
+# Load - default:ine-sit-app03 (http)
+mvn gatling:execute -PLoad
+mvn gatling:execute -PLoad -DbaseUrl=http://33.33.33.33:8081/GetAggregatedCareContacts/service/v2
+mvn gatling:execute -PLoad -DbaseUrl=http://ine-dit-app02.sth.basefarm.net:9002/GetAggregatedCareContacts/service/v2
+
+# Robustness - default:ine-sit-app03 (http)
+mvn gatling:execute -PRobustness
+mvn gatling:execute -PRobustness -DbaseUrl=http://33.33.33.33:8081/GetAggregatedCareContacts/service/v2
+mvn gatling:execute -PRobustness -DbaseUrl=http://ine-dit-app02.sth.basefarm.net:9002/GetAggregatedCareContacts/service/v2
+
+-->
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>se.skltp.aggregatingservices.riv.clinicalprocess.logistics.logistics</groupId>
+  <artifactId>GetAggregatedCareContacts-test-non-functional</artifactId>
+  <version>1.1.4-RC1-SNAPSHOT</version>
+
+  <properties>
+    <gatling.version>2.1.6</gatling.version>
+    <gatling-maven-plugin.version>2.1.6</gatling-maven-plugin.version>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>io.gatling.highcharts</groupId>
+      <artifactId>gatling-charts-highcharts</artifactId>
+      <version>${gatling.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>se.skltp.agp</groupId>
+      <artifactId>agp-test-non-functional</artifactId>
+      <version>1.3.1</version>
+      <scope>test</scope>
+    </dependency>
+
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>io.gatling</groupId>
+        <artifactId>gatling-maven-plugin</artifactId>
+        <version>${gatling-maven-plugin.version}</version>
+        <configuration>
+          <simulationClass>${simulationClass}</simulationClass>
+          <jvmArgs>
+            <jvmArg>-DaggregatedService=${aggregatedService}</jvmArg>
+          </jvmArgs>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+  <profiles>
+    <profile>
+      <id>PingForConfiguration</id>
+      <properties>
+        <simulationClass>se.skltp.agp.testnonfunctional.TP00PingForConfiguration</simulationClass>
+        <aggregatedService>GetAggregatedCareContacts</aggregatedService>
+      </properties>
+    </profile>
+
+    <profile>
+      <id>WarmUp</id>
+      <properties>
+       <simulationClass>se.skltp.aggregatingservices.riv.clinicalprocess.logistics.logistics.getaggregatedcarecontacts.TP01WarmUp</simulationClass>
+      </properties>
+    </profile>
+
+    <profile>
+      <id>Smoke</id>
+      <properties>
+        <simulationClass>se.skltp.aggregatingservices.riv.clinicalprocess.logistics.logistics.getaggregatedcarecontacts.TP02Smoke</simulationClass>
+      </properties>
+    </profile>
+
+    <profile>
+      <id>Load</id>
+      <properties>
+        <simulationClass>se.skltp.aggregatingservices.riv.clinicalprocess.logistics.logistics.getaggregatedcarecontacts.TP03Load</simulationClass>
+      </properties>
+    </profile>
+
+    <profile>
+      <id>Robustness</id>
+      <properties>
+        <simulationClass>se.skltp.aggregatingservices.riv.clinicalprocess.logistics.logistics.getaggregatedcarecontacts.TP04Robustness</simulationClass>
+      </properties>
+    </profile>
+  </profiles>
+</project>
