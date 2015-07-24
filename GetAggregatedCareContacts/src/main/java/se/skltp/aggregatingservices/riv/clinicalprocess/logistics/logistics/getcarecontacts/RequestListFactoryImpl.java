@@ -22,7 +22,8 @@ import se.skltp.agp.service.api.RequestListFactory;
 public class RequestListFactoryImpl implements RequestListFactory {
 
     private static final Logger log = LoggerFactory.getLogger(RequestListFactoryImpl.class);
-    private static final ThreadSafeSimpleDateFormat timestampDateFormat = new ThreadSafeSimpleDateFormat("YYYYMMDDhhmmss");
+    private static final ThreadSafeSimpleDateFormat requestDateFormat = new ThreadSafeSimpleDateFormat("yyyyMMdd");
+    private static final ThreadSafeSimpleDateFormat mostRecentContentDateFormat = new ThreadSafeSimpleDateFormat("yyyyMMddHHmmss");
 
     /**
      * Filtrera svarsposter från engagemangsindexet baserat parametrar i GetCareContacts requestet. 
@@ -50,8 +51,8 @@ public class RequestListFactoryImpl implements RequestListFactory {
         Date requestFromDate = null;
         Date requestToDate = null;
         if (request.getTimePeriod() != null) {
-            requestFromDate = parseTimestamp(request.getTimePeriod().getStart());
-            requestToDate = parseTimestamp(request.getTimePeriod().getEnd());
+            requestFromDate = parseDateString(request.getTimePeriod().getStart());
+            requestToDate = parseDateString(request.getTimePeriod().getEnd());
         }
 
         String sourceSystemHsaId = request.getSourceSystemHSAId();
@@ -101,7 +102,7 @@ public class RequestListFactoryImpl implements RequestListFactory {
         }
         log.debug("Is {} between {} and ", new Object[] { mostRecentContentTimestamp, fromRequestDate, toRequestDate });
         try {
-            Date mostRecentContent = timestampDateFormat.parse(mostRecentContentTimestamp);
+            Date mostRecentContent = mostRecentContentDateFormat.parse(mostRecentContentTimestamp);
             if (fromRequestDate != null && fromRequestDate.after(mostRecentContent)) {
                 return false;
             }
@@ -114,12 +115,12 @@ public class RequestListFactoryImpl implements RequestListFactory {
         }
     }
 
-    private Date parseTimestamp(String timestamp) {
+    private Date parseDateString(String dateString) {
         try {
-            if (timestamp == null || timestamp.length() == 0) {
+            if (dateString == null || dateString.length() == 0) {
                 return null;
             } else {
-                return timestampDateFormat.parse(timestamp);
+                return requestDateFormat.parse(dateString);
             }
         } catch (ParseException e) {
             throw new RuntimeException(e);
