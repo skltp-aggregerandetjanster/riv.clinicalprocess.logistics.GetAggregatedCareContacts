@@ -7,6 +7,7 @@ import static se.skltp.aggregatingservices.CareContactsMuleServer.getAddress;
 import static se.skltp.agp.riv.interoperability.headers.v1.CausingAgentEnum.VIRTUALIZATION_PLATFORM;
 import static se.skltp.agp.test.consumer.AbstractTestConsumer.SAMPLE_ORIGINAL_CONSUMER_HSAID;
 import static se.skltp.agp.test.consumer.AbstractTestConsumer.SAMPLE_SENDER_ID;
+import static se.skltp.agp.test.consumer.AbstractTestConsumer.SAMPLE_CORRELATION_ID;
 import static se.skltp.agp.test.producer.TestProducerDb.TEST_BO_ID_MANY_HITS_1;
 import static se.skltp.agp.test.producer.TestProducerDb.TEST_BO_ID_MANY_HITS_2;
 import static se.skltp.agp.test.producer.TestProducerDb.TEST_BO_ID_MANY_HITS_3;
@@ -69,30 +70,32 @@ public class CareContactIntegrationTest extends AbstractAggregateIntegrationTest
     }
 
     /**
-	 * Perform a test that is expected to return an exception due to missing mandatory http headers (sender-id and original-consumer-id)
-	 */
+     * Perform a test that is expected to return an exception due to missing mandatory http headers
+     */
     @Test
     public void test_fault_missing_http_headers() {
-    	try {
-			doTest(TEST_RR_ID_ZERO_HITS, null, SAMPLE_ORIGINAL_CONSUMER_HSAID, 0);
-			fail("This one should fail on missing http header");
-		} catch (SOAPFaultException e) {
-			assertEquals("Mandatory HTTP header x-vp-sender-id is missing", e.getMessage());
-		}
+        try {
+            doTest(TEST_RR_ID_ZERO_HITS, null, SAMPLE_ORIGINAL_CONSUMER_HSAID, SAMPLE_CORRELATION_ID, 0);
+            fail("This one should fail on missing http header");
+        } catch (SOAPFaultException e) {
+            assertEquals("Mandatory HTTP header x-vp-sender-id is missing", e.getMessage());
+        }
 
-    	try {
-	    	doTest(TEST_RR_ID_ZERO_HITS, SAMPLE_SENDER_ID, null, 0);
-	       	fail("This one should fail on missing http header");
-		} catch (SOAPFaultException e) {
-			assertEquals("Mandatory HTTP header x-rivta-original-serviceconsumer-hsaid is missing", e.getMessage());
-		}
+        try {
+            doTest(TEST_RR_ID_ZERO_HITS, SAMPLE_SENDER_ID, null, SAMPLE_CORRELATION_ID, 0);
+            fail("This one should fail on missing http header");
+        } catch (SOAPFaultException e) {
+            assertEquals("\nMandatory HTTP header x-rivta-original-serviceconsumer-hsaid is missing", e.getMessage());
+        }
 
-    	try {
-	       	doTest(TEST_RR_ID_ZERO_HITS, null, null, 0);
-	       	fail("This one should fail on missing http header");
-		} catch (SOAPFaultException e) {
-			assertEquals("Mandatory HTTP headers x-vp-sender-id and x-rivta-original-serviceconsumer-hsaid are missing", e.getMessage());
-		}
+        try {
+            doTest(TEST_RR_ID_ZERO_HITS, null, null, null, 0);
+            fail("This one should fail on missing http header");
+        } catch (SOAPFaultException e) {
+            String s = e.getMessage();
+            log.debug("something:" + s);
+            assertEquals("Mandatory HTTP header x-vp-sender-id is missing\nMandatory HTTP header x-rivta-original-serviceconsumer-hsaid is missing\nMandatory HTTP header x-skltp-correlation-id is missing", e.getMessage());
+        }
     }
 
     /**
@@ -164,7 +167,7 @@ public class CareContactIntegrationTest extends AbstractAggregateIntegrationTest
      * @return
      */
 	private List<ProcessingStatusRecordType> doTest(String registeredResidentId, int expectedProcessingStatusSize, ExpectedTestData... testData) {
-		return doTest(registeredResidentId, SAMPLE_SENDER_ID, SAMPLE_ORIGINAL_CONSUMER_HSAID, expectedProcessingStatusSize, testData);
+		return doTest(registeredResidentId, SAMPLE_SENDER_ID, SAMPLE_ORIGINAL_CONSUMER_HSAID, SAMPLE_CORRELATION_ID, expectedProcessingStatusSize, testData);
     }
 
 	/**
@@ -177,10 +180,10 @@ public class CareContactIntegrationTest extends AbstractAggregateIntegrationTest
      * @param testData
      * @return
      */
-    private List<ProcessingStatusRecordType> doTest(String registeredResidentId, String senderId, String originalConsumerHsaId, int expectedProcessingStatusSize, ExpectedTestData... testData) {
+    private List<ProcessingStatusRecordType> doTest(String registeredResidentId, String senderId, String originalConsumerHsaId, String correlationId, int expectedProcessingStatusSize, ExpectedTestData... testData) {
 
         // Setup and perform the call to the web service
-        CareContactTestConsumer consumer = new CareContactTestConsumer(DEFAULT_SERVICE_ADDRESS, senderId, originalConsumerHsaId);
+        CareContactTestConsumer consumer = new CareContactTestConsumer(DEFAULT_SERVICE_ADDRESS, senderId, originalConsumerHsaId, correlationId);
         Holder<GetCareContactsResponseType> responseHolder = new Holder<GetCareContactsResponseType>();
         Holder<ProcessingStatusType> processingStatusHolder = new Holder<ProcessingStatusType>();
         consumer.callService(LOGICAL_ADDRESS, registeredResidentId, processingStatusHolder, responseHolder);
