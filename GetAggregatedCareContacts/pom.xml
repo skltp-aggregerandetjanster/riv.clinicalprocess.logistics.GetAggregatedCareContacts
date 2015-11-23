@@ -41,7 +41,7 @@
 
     <dependency>
       <groupId>org.soitoolkit.commons.poms.mule-dependencies</groupId>
-      <artifactId>soitoolkit-mule-3.3.1-dependencies</artifactId>
+      <artifactId>soitoolkit-mule-3.7.0-dependencies</artifactId>
       <version>${soitoolkit.version}</version>
       <type>pom</type>
     </dependency>
@@ -192,7 +192,7 @@
                 -->
           <classifier>core</classifier>
           <excludes>
-            <exclude>log4j.xml</exclude>
+            <exclude>log4j2.xml</exclude>
           </excludes>
         </configuration>
         <executions>
@@ -219,8 +219,7 @@
                 <resource>
                   <directory>src/environment</directory>
                   <includes>
-                    <include>log4j.xml</include>
-                    <include>log4j.dtd</include>
+                    <include>log4j2.xml</include>
                   </includes>
                 </resource>
               </resources>
