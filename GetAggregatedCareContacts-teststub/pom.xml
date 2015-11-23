@@ -13,11 +13,6 @@
   <packaging>mule</packaging>
   <name>GetAggregatedCareContacts-teststub</name>
 
-  <properties>
-    <skltp.agp.version>1.3.5</skltp.agp.version>
-    <GetAggregatedCareContacts.version>${project.version}</GetAggregatedCareContacts.version>
-  </properties>
-
   <dependencies>
 	  <!-- dependencies to the integration component that contains the services to stub -->
     <dependency>

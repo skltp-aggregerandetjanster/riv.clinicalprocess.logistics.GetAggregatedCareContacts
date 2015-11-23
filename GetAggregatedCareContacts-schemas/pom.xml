@@ -24,7 +24,6 @@ DON'T CHANGE THE CONTENT OF THIS COMMENT UNLESS YOU REALLY KNOW WHAT YOU ARE DOI
     <!-- Properties for generating code from WSDL and XML Schemas (JAX-WS + JAXB) -->
     <schema.path>${basedir}/src/main/resources/schemas</schema.path>
     <schema.gen.src.dir>${project.build.directory}/generated-sources/cxf</schema.gen.src.dir>
-    <cxf.version>2.5.1</cxf.version>
   </properties>
 
   <dependencies>
@@ -42,7 +41,6 @@ DON'T CHANGE THE CONTENT OF THIS COMMENT UNLESS YOU REALLY KNOW WHAT YOU ARE DOI
       <plugin>
         <groupId>org.apache.cxf</groupId>
         <artifactId>cxf-codegen-plugin</artifactId>
-        <version>${cxf.version}</version>
         <executions>
           <execution>
             <id>generate-sources</id>
