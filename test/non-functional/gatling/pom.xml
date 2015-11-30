@@ -4,30 +4,25 @@
 
 <!--
 
-# PingForConfiguration - default:33.33.33.33:8081 (http)
+# default url - skltp-box; test only over http (no https)
+
+# PingForConfiguration
 mvn gatling:execute -PPingForConfiguration -DserviceLowercase=getaggregatedcarecontacts
-mvn gatling:execute -PPingForConfiguration -DbaseUrl=http://ine-dit-app02.sth.basefarm.net:9002/agp/getaggregatedcarecontacts/itintegration/monitoring/PingForConfiguration/1/rivtabp21
-mvn gatling:execute -PPingForConfiguration -DbaseUrl=http://ine-sit-app03.sth.basefarm.net:9002/agp/getaggregatedcarecontacts/itintegration/monitoring/PingForConfiguration/1/rivtabp21
+mvn gatling:execute -PPingForConfiguration -DbaseUrl=http://ine-dit-app02.sth.basefarm.net:9002/agp/getaggregatedcarecontacts/itintegration/monitoring/PingForConfiguration/1/rivtabp21 -DserviceLowercase=getaggregatedcarecontacts
+mvn gatling:execute -PPingForConfiguration -DbaseUrl=http://ine-tit-app02.sth.basefarm.net:9002/agp/getaggregatedcarecontacts/itintegration/monitoring/PingForConfiguration/1/rivtabp21 -DserviceLowercase=getaggregatedcarecontacts
+mvn gatling:execute -PPingForConfiguration -DbaseUrl=http://ine-sit-app03.sth.basefarm.net:9002/agp/getaggregatedcarecontacts/itintegration/monitoring/PingForConfiguration/1/rivtabp21 -DserviceLowercase=getaggregatedcarecontacts
 
-# WarmUp - default:33.33.33.33:8081 (http)
-mvn gatling:execute -PWarmUp
-mvn gatling:execute -PWarmUp -DbaseUrl=http://ine-dit-app02.sth.basefarm.net:9002/GetAggregatedCareContacts/service/v2
-mvn gatling:execute -PWarmUp -DbaseUrl=http://ine-sit-app03.sth.basefarm.net:9002/GetAggregatedCareContacts/service/v2
+# HappyPath - testDuration in seconds
+mvn gatling:execute -PHappyPath -DtestDuration=7
+mvn gatling:execute -PHappyPath -DbaseUrl=http://ine-tit-app02.sth.basefarm.net:9002/GetAggregatedCareContacts/service/v2 -DtestDuration=7
+mvn gatling:execute -PHappyPath -DbaseUrl=http://ine-tit-app02.sth.basefarm.net:9002/GetAggregatedCareContacts/service/v2 -DnumberOfConcurrentUsers=3
+mvn gatling:execute -PHappyPath -DbaseUrl=http://ine-sit-app03.sth.basefarm.net:9002/GetAggregatedCareContacts/service/v2 -DnumberOfConcurrentUsers=45 -DtestDuration=120
 
-# Smoke - default:ine-sit-app03 (http)
-mvn gatling:execute -PSmoke
-mvn gatling:execute -PSmoke -DbaseUrl=http://33.33.33.33:8081/GetAggregatedCareContacts/service/v2
-mvn gatling:execute -PSmoke -DbaseUrl=http://ine-dit-app02.sth.basefarm.net:9002/GetAggregatedCareContacts/service/v2
-
-# Load - default:ine-sit-app03 (http)
-mvn gatling:execute -PLoad
-mvn gatling:execute -PLoad -DbaseUrl=http://33.33.33.33:8081/GetAggregatedCareContacts/service/v2
-mvn gatling:execute -PLoad -DbaseUrl=http://ine-dit-app02.sth.basefarm.net:9002/GetAggregatedCareContacts/service/v2
-
-# Robustness - default:ine-sit-app03 (http)
-mvn gatling:execute -PRobustness
-mvn gatling:execute -PRobustness -DbaseUrl=http://33.33.33.33:8081/GetAggregatedCareContacts/service/v2
-mvn gatling:execute -PRobustness -DbaseUrl=http://ine-dit-app02.sth.basefarm.net:9002/GetAggregatedCareContacts/service/v2
+# Patients - testDuration in minutes
+mvn gatling:execute -PPatients -DtestDuration=1
+mvn gatling:execute -PPatients -DbaseUrl=http://ine-tit-app02.sth.basefarm.net:9002/GetAggregatedCareContacts/service/v2 -DnumberOfConcurrentUsers=4 -DtestDuration=60
+mvn gatling:execute -PPatients -DbaseUrl=http://ine-tit-app02.sth.basefarm.net:9002/GetAggregatedCareContacts/service/v2 -DpatientsFileName=patients-override.csv
+mvn gatling:execute -PPatients -DbaseUrl=http://ine-sit-app03.sth.basefarm.net:9002/GetAggregatedCareContacts/service/v2 -DtestDuration=720
 
 -->
 
@@ -35,11 +30,11 @@ mvn gatling:execute -PRobustness -DbaseUrl=http://ine-dit-app02.sth.basefarm.net
 
   <groupId>se.skltp.aggregatingservices.riv.clinicalprocess.logistics.logistics</groupId>
   <artifactId>GetAggregatedCareContacts-test-non-functional</artifactId>
-  <version>1.1.4-RC1-SNAPSHOT</version>
+  <version>1.1.4-RC5-SNAPSHOT</version>
 
   <properties>
-    <gatling.version>2.1.6</gatling.version>
-    <gatling-maven-plugin.version>2.1.6</gatling-maven-plugin.version>
+    <gatling.version>2.1.7</gatling.version>
+    <gatling-maven-plugin.version>2.1.7</gatling-maven-plugin.version>
   </properties>
 
   <dependencies>
@@ -53,7 +48,7 @@ mvn gatling:execute -PRobustness -DbaseUrl=http://ine-dit-app02.sth.basefarm.net
     <dependency>
       <groupId>se.skltp.agp</groupId>
       <artifactId>agp-test-non-functional</artifactId>
-      <version>1.3.1</version>
+      <version>1.3.7</version>
       <scope>test</scope>
     </dependency>
 
@@ -79,36 +74,22 @@ mvn gatling:execute -PRobustness -DbaseUrl=http://ine-dit-app02.sth.basefarm.net
     <profile>
       <id>PingForConfiguration</id>
       <properties>
-        <simulationClass>se.skltp.agp.testnonfunctional.TP00PingForConfiguration</simulationClass>
+        <simulationClass>se.skltp.agp.testnonfunctional.TPPingForConfiguration</simulationClass>
         <aggregatedService>GetAggregatedCareContacts</aggregatedService>
       </properties>
     </profile>
 
     <profile>
-      <id>WarmUp</id>
+      <id>HappyPath</id>
       <properties>
-       <simulationClass>se.skltp.aggregatingservices.riv.clinicalprocess.logistics.logistics.getaggregatedcarecontacts.TP01WarmUp</simulationClass>
+        <simulationClass>se.skltp.aggregatingservices.riv.clinicalprocess.logistics.logistics.getaggregatedcarecontacts.TPHappyPath</simulationClass>
       </properties>
     </profile>
 
     <profile>
-      <id>Smoke</id>
+      <id>Patients</id>
       <properties>
-        <simulationClass>se.skltp.aggregatingservices.riv.clinicalprocess.logistics.logistics.getaggregatedcarecontacts.TP02Smoke</simulationClass>
-      </properties>
-    </profile>
-
-    <profile>
-      <id>Load</id>
-      <properties>
-        <simulationClass>se.skltp.aggregatingservices.riv.clinicalprocess.logistics.logistics.getaggregatedcarecontacts.TP03Load</simulationClass>
-      </properties>
-    </profile>
-
-    <profile>
-      <id>Robustness</id>
-      <properties>
-        <simulationClass>se.skltp.aggregatingservices.riv.clinicalprocess.logistics.logistics.getaggregatedcarecontacts.TP04Robustness</simulationClass>
+        <simulationClass>se.skltp.aggregatingservices.riv.clinicalprocess.logistics.logistics.getaggregatedcarecontacts.TPPatients</simulationClass>
       </properties>
     </profile>
   </profiles>

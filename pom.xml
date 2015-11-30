@@ -22,6 +22,10 @@ DON'T CHANGE THE CONTENT OF THIS COMMENT UNLESS YOU REALLY KNOW WHAT YOU ARE DOI
     <packaging>pom</packaging>
     <name>GetAggregatedCareContacts-parent</name>
 
+    <properties>
+    	<skltp.agp.version>1.3.7</skltp.agp.version>
+    </properties>
+
 		<scm>
 			<url>https://github.com/skltp-aggregerandetjanster/riv.clinicalprocess.logistics.logistics.GetAggregatedCareContacts</url>
 			<connection>scm:git:git://github.com/skltp-aggregerandetjanster/riv.clinicalprocess.logistics.logistics.GetAggregatedCareContacts.git</connection>
