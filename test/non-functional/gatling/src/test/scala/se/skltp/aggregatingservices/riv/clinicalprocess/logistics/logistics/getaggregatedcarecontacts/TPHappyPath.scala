@@ -1,10 +1,10 @@
 package se.skltp.aggregatingservices.riv.clinicalprocess.logistics.logistics.getaggregatedcarecontacts
 
-import se.skltp.agp.testnonfunctional.TP01WarmUpAbstract
+import se.skltp.agp.testnonfunctional.TPHappyPathAbstract
 
 /**
- * Simple requests to warm up service.
+ * Just test Tolvan Tolvansson - no error latency
  */
-class TP01WarmUp extends TP01WarmUpAbstract with CommonParameters {
+class TPHappyPath extends TPHappyPathAbstract with CommonParameters {
   setUp(setUpAbstract(serviceName, urn, responseElement, responseItem, baseUrl))
 }
