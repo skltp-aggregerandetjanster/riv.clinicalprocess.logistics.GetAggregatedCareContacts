@@ -9,10 +9,12 @@ import java.util.List;
 
 import org.junit.Ignore;
 import org.junit.Test;
+import org.mockito.Mockito;
 
 import riv.clinicalprocess.logistics.logistics.getcarecontactsresponder.v2.GetCareContactsType;
 import riv.clinicalprocess.logistics.logistics.v2.DatePeriodType;
 import riv.clinicalprocess.logistics.logistics.v2.PersonIdType;
+import se.skltp.agp.cache.TakCacheBean;
 import se.skltp.agp.riv.itintegration.engagementindex.findcontentresponder.v1.FindContentResponseType;
 import se.skltp.agp.riv.itintegration.engagementindex.findcontentresponder.v1.FindContentType;
 import se.skltp.agp.riv.itintegration.engagementindex.v1.EngagementType;
@@ -34,9 +36,16 @@ public class RequestListFactoryImplTest {
         FindContentType fc = createFindContent(RR_ID);
         GetCareContactsType getCareDoc = createGetCareContacts(RR_ID, Collections.<String> emptyList());
         QueryObject queryObject = new QueryObject(fc, getCareDoc);
+        
+        TakCacheBean takCache = Mockito.mock(TakCacheBean.class);
+        Mockito.when(takCache.contains(Mockito.anyString())).thenReturn(true);
+
+        requestFactory.setTakCache(takCache);
+
         FindContentResponseType findContentResponse = createFindContentResponse(TestProducerDb.TEST_LOGICAL_ADDRESS_1, TestProducerDb.TEST_LOGICAL_ADDRESS_2);
         List<Object[]> requestList =  requestFactory.createRequestList(queryObject, findContentResponse);
         assertEquals(2, requestList.size());
+
 
         assertEquals(TestProducerDb.TEST_LOGICAL_ADDRESS_2, requestList.get(0)[0]);
         GetCareContactsType request1 = (GetCareContactsType)requestList.get(0)[1];
@@ -57,6 +66,10 @@ public class RequestListFactoryImplTest {
         findContentResponse.getEngagement().get(0).setSourceSystem(SOURCE_SYSTEM_1);
         findContentResponse.getEngagement().get(1).setSourceSystem(SOURCE_SYSTEM_2);
 
+        TakCacheBean takCache = Mockito.mock(TakCacheBean.class);
+        Mockito.when(takCache.contains(Mockito.anyString())).thenReturn(true);
+
+        requestFactory.setTakCache(takCache);
         List<Object[]> requestList =  requestFactory.createRequestList(queryObject, findContentResponse);
         assertEquals(2, requestList.size());
 
@@ -78,6 +91,12 @@ public class RequestListFactoryImplTest {
         FindContentResponseType findContentResponse = createFindContentResponse(TestProducerDb.TEST_LOGICAL_ADDRESS_1, TestProducerDb.TEST_LOGICAL_ADDRESS_2);
         findContentResponse.getEngagement().get(0).setSourceSystem(SOURCE_SYSTEM_1);
         findContentResponse.getEngagement().get(1).setSourceSystem(SOURCE_SYSTEM_1);
+        
+        TakCacheBean takCache = Mockito.mock(TakCacheBean.class);
+        Mockito.when(takCache.contains(Mockito.anyString())).thenReturn(true);
+
+        requestFactory.setTakCache(takCache);
+        
         List<Object[]> requestList =  requestFactory.createRequestList(queryObject, findContentResponse);
         assertEquals(1, requestList.size());
         assertEquals(SOURCE_SYSTEM_1, requestList.get(0)[0]);
@@ -95,6 +114,12 @@ public class RequestListFactoryImplTest {
         FindContentResponseType findContentResponse = createFindContentResponse(TestProducerDb.TEST_LOGICAL_ADDRESS_1, TestProducerDb.TEST_LOGICAL_ADDRESS_1);
         findContentResponse.getEngagement().get(0).setSourceSystem(SOURCE_SYSTEM_1);
         findContentResponse.getEngagement().get(1).setSourceSystem(SOURCE_SYSTEM_1);
+
+        TakCacheBean takCache = Mockito.mock(TakCacheBean.class);
+        Mockito.when(takCache.contains(Mockito.anyString())).thenReturn(true);
+
+        requestFactory.setTakCache(takCache);       
+
         List<Object[]> requestList =  requestFactory.createRequestList(queryObject, findContentResponse);
         assertEquals(1, requestList.size());
         assertEquals(SOURCE_SYSTEM_1, requestList.get(0)[0]);

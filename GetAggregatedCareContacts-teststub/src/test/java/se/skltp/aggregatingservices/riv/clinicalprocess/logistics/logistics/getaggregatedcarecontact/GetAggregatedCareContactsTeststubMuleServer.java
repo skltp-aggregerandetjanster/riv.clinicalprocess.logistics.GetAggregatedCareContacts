@@ -12,7 +12,7 @@ public class GetAggregatedCareContactsTeststubMuleServer {
 	public static final String MULE_SERVER_ID = "GetAggregatedCareContacts-teststub";
 
 	private static final Logger logger = LoggerFactory.getLogger(GetAggregatedCareContactsTeststubMuleServer.class);
-    private static final RecursiveResourceBundle rb = new RecursiveResourceBundle("GetAggregatedCareContacts-config");
+    private static final RecursiveResourceBundle rb = new RecursiveResourceBundle("GetAggregatedCareContacts-v1-config");
 
 	public static void main(String[] args) throws Exception {
 

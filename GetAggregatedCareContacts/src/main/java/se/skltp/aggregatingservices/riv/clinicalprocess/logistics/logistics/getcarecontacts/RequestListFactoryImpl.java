@@ -15,10 +15,17 @@ import se.skltp.agp.riv.itintegration.engagementindex.findcontentresponder.v1.Fi
 import se.skltp.agp.riv.itintegration.engagementindex.v1.EngagementType;
 import se.skltp.agp.service.api.QueryObject;
 import se.skltp.agp.service.api.RequestListFactory;
+import se.skltp.agp.cache.TakCacheBean;
 
 public class RequestListFactoryImpl implements RequestListFactory {
 
     private static final Logger log = LoggerFactory.getLogger(RequestListFactoryImpl.class);
+
+    // contains HSAid for a specific namespace
+    private TakCacheBean takCache;
+    public void setTakCache(TakCacheBean takCache) {
+        this.takCache = takCache;
+    }
 
     /**
      * Filtrera svarsposter från engagemangsindexet baserat parametrar i GetCareContacts requestet. 
@@ -54,9 +61,11 @@ public class RequestListFactoryImpl implements RequestListFactory {
 
         for (EngagementType engagement : inEngagements) {
             if (isPartOf(sourceSystemHsaId, engagement.getLogicalAddress())) {
-                // Add pdlUnit to source system
-                log.debug("Add source system: {} for producer: {}", engagement.getSourceSystem(), engagement.getLogicalAddress());
-                addPdlUnitToSourceSystem(sourceSystem_pdlUnitList_map, engagement.getSourceSystem(), engagement.getLogicalAddress());
+				// Add pdlUnit to source system
+                if (takCache.contains(engagement.getLogicalAddress())) {
+	                log.debug("Add source system: {} for producer: {}", engagement.getSourceSystem(), engagement.getLogicalAddress());
+	                addPdlUnitToSourceSystem(sourceSystem_pdlUnitList_map, engagement.getSourceSystem(), engagement.getLogicalAddress());
+                }
             }
         }
 
