@@ -25,6 +25,7 @@ import java.util.List;
 import javax.xml.ws.Holder;
 import javax.xml.ws.soap.SOAPFaultException;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,6 +33,7 @@ import org.soitoolkit.commons.mule.util.RecursiveResourceBundle;
 
 import riv.clinicalprocess.logistics.logistics.getcarecontactsresponder.v3.GetCareContactsResponseType;
 import riv.clinicalprocess.logistics.logistics.v3.CareContactType;
+import se.skltp.agp.cache.TakCacheBean;
 import se.skltp.agp.riv.interoperability.headers.v1.ProcessingStatusRecordType;
 import se.skltp.agp.riv.interoperability.headers.v1.ProcessingStatusType;
 import se.skltp.agp.test.consumer.AbstractAggregateIntegrationTest;
@@ -43,7 +45,7 @@ public class CareContactIntegrationTest extends AbstractAggregateIntegrationTest
 
     protected static final Logger log = LoggerFactory.getLogger(CareContactIntegrationTest.class);
 
-    private static final RecursiveResourceBundle rb = new RecursiveResourceBundle("GetAggregatedCareContacts-config");
+    private static final RecursiveResourceBundle rb = new RecursiveResourceBundle("GetAggregatedCareContacts-v2-config");
     private static final String SKLTP_HSA_ID = rb.getString("SKLTP_HSA_ID");
 
     private static final String LOGICAL_ADDRESS = "logical-address";
@@ -51,6 +53,12 @@ public class CareContactIntegrationTest extends AbstractAggregateIntegrationTest
     private static final String EXPECTED_ERR_INVALID_ID_MSG = "Invalid Id: " + TEST_RR_ID_FAULT_INVALID_ID;;
     private static final String DEFAULT_SERVICE_ADDRESS = getAddress("SERVICE_INBOUND_URL");
 
+    @Before
+    public void loadTakCache() throws Exception {
+        final TakCacheBean takCache = (TakCacheBean) muleContext.getRegistry().lookupObject("takCacheBean");
+        takCache.updateCache();
+    }
+    
     protected String getConfigResources() {
         return
                 "soitoolkit-mule-jms-connector-activemq-embedded.xml," +
@@ -58,7 +66,9 @@ public class CareContactIntegrationTest extends AbstractAggregateIntegrationTest
                 //			"aggregating-services-common.xml," +
                 //			"aggregating-service.xml," +
                 "teststub-services/engagemangsindex-teststub-service.xml," +
-                "teststub-services/service-producer-teststub-service.xml";
+                "teststub-services/service-producer-teststub-service.xml," +
+                "teststub-non-default-services/tak-teststub-service.xml";
+
     }
 
     /**

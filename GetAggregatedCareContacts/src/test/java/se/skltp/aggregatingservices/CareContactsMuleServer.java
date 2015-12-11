@@ -8,7 +8,7 @@ import org.soitoolkit.commons.mule.util.RecursiveResourceBundle;
 public class CareContactsMuleServer {
 
     private static final Logger logger = LoggerFactory.getLogger(CareContactsMuleServer.class);
-    private static final RecursiveResourceBundle rb = new RecursiveResourceBundle("GetAggregatedCareContacts-config");
+    private static final RecursiveResourceBundle rb = new RecursiveResourceBundle("GetAggregatedCareContacts-v2-config");
     public static final String MULE_SERVER_ID = rb.getString("MULE_SERVER_ID");
 
     public static void main(String[] args) throws Exception {
