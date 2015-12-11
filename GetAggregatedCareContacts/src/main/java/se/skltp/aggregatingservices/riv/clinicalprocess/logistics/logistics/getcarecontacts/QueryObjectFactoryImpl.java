@@ -5,7 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.soitoolkit.commons.mule.jaxb.JaxbUtil;
 import org.w3c.dom.Node;
 
-import riv.clinicalprocess.logistics.logistics.getcarecontactsresponder.v2.GetCareContactsType;
+import riv.clinicalprocess.logistics.logistics.getcarecontactsresponder.v3.GetCareContactsType;
 import se.skltp.agp.riv.itintegration.engagementindex.findcontentresponder.v1.FindContentType;
 import se.skltp.agp.service.api.QueryObject;
 import se.skltp.agp.service.api.QueryObjectFactory;

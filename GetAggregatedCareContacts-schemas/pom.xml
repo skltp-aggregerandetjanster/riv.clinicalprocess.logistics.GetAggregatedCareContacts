@@ -51,23 +51,23 @@ DON'T CHANGE THE CONTENT OF THIS COMMENT UNLESS YOU REALLY KNOW WHAT YOU ARE DOI
               <sourceRoot>${basedir}/target/generated/src/main/java</sourceRoot>
               <wsdlOptions>
                 <wsdloption>
-                  <wsdl>${schema.path}/clinicalprocess_logistics_logistics_2.0.0/interactions/GetCareContactsInteraction/GetCareContactsInteraction_2.0_RIVTABP21.wsdl</wsdl>
+                  <wsdl>${schema.path}/clinicalprocess_logistics_logistics_3.0.0/interactions/GetCareContactsInteraction/GetCareContactsInteraction_3.0_RIVTABP21.wsdl</wsdl>
                     <extraargs>
                       <extraarg>-p</extraarg>
                     <extraarg>
-                      urn:riv:clinicalprocess:logistics:logistics:GetCareContacts:2:rivtabp21=riv.clinicalprocess.logistics.logistics.getcarecontactsrequest.v2
+                      urn:riv:clinicalprocess:logistics:logistics:GetCareContacts:3:rivtabp21=riv.clinicalprocess.logistics.logistics.getcarecontactsrequest.v3
                     </extraarg>
                     <extraarg>-p</extraarg>
                     <extraarg>
-                      urn:riv:clinicalprocess:logistics:logistics:GetCareContactsResponder:2=riv.clinicalprocess.logistics.logistics.getcarecontactsresponder.v2
+                      urn:riv:clinicalprocess:logistics:logistics:GetCareContactsResponder:3=riv.clinicalprocess.logistics.logistics.getcarecontactsresponder.v3
                     </extraarg>
                     <extraarg>-p</extraarg>
                     <extraarg>
-                      urn:riv:clinicalprocess:logistics:logistics:2=riv.clinicalprocess.logistics.logistics.v2
+                      urn:riv:clinicalprocess:logistics:logistics:3=riv.clinicalprocess.logistics.logistics.v3
                     </extraarg>
                     <extraarg>-p</extraarg>
                     <extraarg>
-                      urn:riv:clinicalprocess:logistics:logistics:enums:2=riv.clinicalprocess.logistics.logistics.enums.v2
+                      urn:riv:clinicalprocess:logistics:logistics:enums:3=riv.clinicalprocess.logistics.logistics.enums.v3
                     </extraarg>
                     <extraarg>-p</extraarg>
                     <extraarg>

@@ -7,10 +7,10 @@ import javax.xml.ws.Holder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import riv.clinicalprocess.logistics.logistics.getcarecontactsrequest.v2.GetCareContactsResponderInterface;
-import riv.clinicalprocess.logistics.logistics.getcarecontactsresponder.v2.GetCareContactsResponseType;
-import riv.clinicalprocess.logistics.logistics.getcarecontactsresponder.v2.GetCareContactsType;
-import riv.clinicalprocess.logistics.logistics.v2.PersonIdType;
+import riv.clinicalprocess.logistics.logistics.getcarecontactsrequest.v3.GetCareContactsResponderInterface;
+import riv.clinicalprocess.logistics.logistics.getcarecontactsresponder.v3.GetCareContactsResponseType;
+import riv.clinicalprocess.logistics.logistics.getcarecontactsresponder.v3.GetCareContactsType;
+import riv.clinicalprocess.logistics.logistics.v3.PersonIdType;
 import se.skltp.aggregatingservices.CareContactsMuleServer;
 import se.skltp.agp.riv.interoperability.headers.v1.ProcessingStatusType;
 import se.skltp.agp.test.consumer.AbstractTestConsumer;

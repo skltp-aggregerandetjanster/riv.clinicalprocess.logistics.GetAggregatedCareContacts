@@ -1,4 +1,4 @@
-<GetCareContactsResponse xmlns="urn:riv:clinicalprocess:logistics:logistics:GetCareContactsResponder:2">
+<GetCareContactsResponse xmlns="urn:riv:clinicalprocess:logistics:logistics:GetCareContactsResponder:3">
    <careContact xmlns="urn:riv:clinicalprocess:logistics:logistics:2">
       <careContactHeader>
          <careContactId>SE1623210002198611062384ovvtf1</careContactId>

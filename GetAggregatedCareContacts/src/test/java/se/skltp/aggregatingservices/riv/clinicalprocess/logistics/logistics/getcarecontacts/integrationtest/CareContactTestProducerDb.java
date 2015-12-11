@@ -3,13 +3,14 @@ package se.skltp.aggregatingservices.riv.clinicalprocess.logistics.logistics.get
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import riv.clinicalprocess.logistics.logistics.getcarecontactsresponder.v2.GetCareContactsResponseType;
-import riv.clinicalprocess.logistics.logistics.v2.CareContactBodyType;
-import riv.clinicalprocess.logistics.logistics.v2.CareContactType;
-import riv.clinicalprocess.logistics.logistics.v2.HealthcareProfessionalType;
-import riv.clinicalprocess.logistics.logistics.v2.OrgUnitType;
-import riv.clinicalprocess.logistics.logistics.v2.PatientSummaryHeaderType;
-import riv.clinicalprocess.logistics.logistics.v2.PersonIdType;
+import riv.clinicalprocess.logistics.logistics.getcarecontactsresponder.v3.GetCareContactsResponseType;
+import riv.clinicalprocess.logistics.logistics.v3.CVType;
+import riv.clinicalprocess.logistics.logistics.v3.CareContactBodyType;
+import riv.clinicalprocess.logistics.logistics.v3.CareContactType;
+import riv.clinicalprocess.logistics.logistics.v3.HealthcareProfessionalType;
+import riv.clinicalprocess.logistics.logistics.v3.OrgUnitType;
+import riv.clinicalprocess.logistics.logistics.v3.PatientSummaryHeaderType;
+import riv.clinicalprocess.logistics.logistics.v3.PersonIdType;
 import se.skltp.agp.test.producer.TestProducerDb;
 
 public class CareContactTestProducerDb extends TestProducerDb {
@@ -65,9 +66,11 @@ public class CareContactTestProducerDb extends TestProducerDb {
         response.setCareContactHeader(header);
 
         CareContactBodyType body = new CareContactBodyType();
-        body.setCareContactCode(0);
+        CVType cvtype = new CVType();
+
+        body.setCareContactCode(cvtype);
         body.setCareContactReason("reason");
-        body.setCareContactStatus(0);
+        body.setCareContactStatus(cvtype);
 
         OrgUnitType unit = new OrgUnitType();
         unit.setOrgUnitHSAId(logicalAddress);

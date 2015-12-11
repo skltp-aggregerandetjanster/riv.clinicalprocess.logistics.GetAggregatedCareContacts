@@ -10,9 +10,9 @@ import java.util.List;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import riv.clinicalprocess.logistics.logistics.getcarecontactsresponder.v2.GetCareContactsType;
-import riv.clinicalprocess.logistics.logistics.v2.DatePeriodType;
-import riv.clinicalprocess.logistics.logistics.v2.PersonIdType;
+import riv.clinicalprocess.logistics.logistics.getcarecontactsresponder.v3.GetCareContactsType;
+import riv.clinicalprocess.logistics.logistics.v3.DatePeriodType;
+import riv.clinicalprocess.logistics.logistics.v3.PersonIdType;
 import se.skltp.agp.riv.itintegration.engagementindex.findcontentresponder.v1.FindContentResponseType;
 import se.skltp.agp.riv.itintegration.engagementindex.findcontentresponder.v1.FindContentType;
 import se.skltp.agp.riv.itintegration.engagementindex.v1.EngagementType;
@@ -111,7 +111,7 @@ public class RequestListFactoryImplTest {
         DatePeriodType timePeriod = new DatePeriodType();
         timePeriod.setStart("20110101");
         timePeriod.setEnd("20110201");
-        getCareDoc.setTimePeriod(timePeriod);
+        getCareDoc.setDatePeriod(timePeriod);
         QueryObject queryObject = new QueryObject(fc, getCareDoc);
         FindContentResponseType findContentResponse = createFindContentResponse(TestProducerDb.TEST_LOGICAL_ADDRESS_1, TestProducerDb.TEST_LOGICAL_ADDRESS_2);
         findContentResponse.getEngagement().get(0).setMostRecentContent("20110101120101");

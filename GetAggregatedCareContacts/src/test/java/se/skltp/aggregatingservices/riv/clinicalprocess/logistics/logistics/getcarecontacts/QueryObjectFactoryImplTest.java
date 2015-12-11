@@ -12,9 +12,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.w3c.dom.Document;
 
-import riv.clinicalprocess.logistics.logistics.getcarecontactsresponder.v2.GetCareContactsType;
-import riv.clinicalprocess.logistics.logistics.getcarecontactsresponder.v2.ObjectFactory;
-import riv.clinicalprocess.logistics.logistics.v2.PersonIdType;
+import riv.clinicalprocess.logistics.logistics.getcarecontactsresponder.v3.GetCareContactsType;
+import riv.clinicalprocess.logistics.logistics.getcarecontactsresponder.v3.ObjectFactory;
+import riv.clinicalprocess.logistics.logistics.v3.PersonIdType;
 import se.skltp.agp.service.api.QueryObject;
 
 public class QueryObjectFactoryImplTest {
