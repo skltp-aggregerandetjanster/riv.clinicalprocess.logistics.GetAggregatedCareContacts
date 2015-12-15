@@ -11,7 +11,7 @@
 	</appender>
 
     <appender name="ROLLINGFILE" class="org.apache.log4j.RollingFileAppender">
-        <param name="file" value="${mule.home}/logs/mule-app-GetAggregatedCareContact.log" />
+        <param name="file" value="${mule.home}/logs/mule-app-GetAggregatedCareContact-v2.log" />
         <param name="MaxFileSize" value="1000KB" />
         <param name="MaxBackupIndex" value="3" />
         <layout class="org.apache.log4j.PatternLayout">
@@ -21,7 +21,7 @@
     
     <!-- For PingForConfiguration logging only -->
     <appender name="ROLLINGFILE_MONITORING" class="org.apache.log4j.RollingFileAppender">
-        <param name="file" value="${mule.home}/logs/mule-app-GetAggregatedCareContact-monitoring.log" />
+        <param name="file" value="${mule.home}/logs/mule-app-GetAggregatedCareContact-v2-monitoring.log" />
         <param name="MaxFileSize" value="1000KB" />
         <param name="MaxBackupIndex" value="3" />
         <layout class="org.apache.log4j.PatternLayout">
