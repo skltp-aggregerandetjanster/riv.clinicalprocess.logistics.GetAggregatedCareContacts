@@ -10,15 +10,22 @@ import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import riv.clinicalprocess.logistics.logistics.getcarecontactsresponder.v2.GetCareContactsType;
+import riv.clinicalprocess.logistics.logistics.getcarecontactsresponder.v3.GetCareContactsType;
 import se.skltp.agp.riv.itintegration.engagementindex.findcontentresponder.v1.FindContentResponseType;
 import se.skltp.agp.riv.itintegration.engagementindex.v1.EngagementType;
 import se.skltp.agp.service.api.QueryObject;
 import se.skltp.agp.service.api.RequestListFactory;
+import se.skltp.agp.cache.TakCacheBean;
 
 public class RequestListFactoryImpl implements RequestListFactory {
 
     private static final Logger log = LoggerFactory.getLogger(RequestListFactoryImpl.class);
+
+    // contains HSAid for a specific namespace
+    private TakCacheBean takCache;
+    public void setTakCache(TakCacheBean takCache) {
+        this.takCache = takCache;
+    }
 
     /**
      * Filtrera svarsposter från engagemangsindexet baserat parametrar i GetCareContacts requestet. 
@@ -54,9 +61,11 @@ public class RequestListFactoryImpl implements RequestListFactory {
 
         for (EngagementType engagement : inEngagements) {
             if (isPartOf(sourceSystemHsaId, engagement.getLogicalAddress())) {
-                // Add pdlUnit to source system
-                log.debug("Add source system: {} for producer: {}", engagement.getSourceSystem(), engagement.getLogicalAddress());
-                addPdlUnitToSourceSystem(sourceSystem_pdlUnitList_map, engagement.getSourceSystem(), engagement.getLogicalAddress());
+				// Add pdlUnit to source system
+                if (takCache.contains(engagement.getLogicalAddress())) {
+	                log.debug("Add source system: {} for producer: {}", engagement.getSourceSystem(), engagement.getLogicalAddress());
+	                addPdlUnitToSourceSystem(sourceSystem_pdlUnitList_map, engagement.getSourceSystem(), engagement.getLogicalAddress());
+                }
             }
         }
 

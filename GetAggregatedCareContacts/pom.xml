@@ -6,7 +6,7 @@
   <parent>
     <groupId>se.skltp.aggregatingservices.riv.clinicalprocess.logistics.logistics</groupId>
     <artifactId>GetAggregatedCareContacts-parent</artifactId>
-    <version>1.1.5-RC1-SNAPSHOT</version>
+    <version>2.0.0-RC3-SNAPSHOT</version>
   </parent>
 
   <artifactId>GetAggregatedCareContacts</artifactId>
@@ -41,11 +41,11 @@
 
     <dependency>
       <groupId>org.soitoolkit.commons.poms.mule-dependencies</groupId>
-      <artifactId>soitoolkit-mule-3.3.1-dependencies</artifactId>
+      <artifactId>soitoolkit-mule-3.7.0-dependencies</artifactId>
       <version>${soitoolkit.version}</version>
       <type>pom</type>
     </dependency>
-    
+
     <!-- test dependencies -->
 
     <dependency>
@@ -103,7 +103,7 @@
         <groupId>org.mule.tools</groupId>
         <artifactId>maven-mule-plugin</artifactId>
         <extensions>true</extensions>
-        
+
         <!-- Include mule-dependencies that don't come with Mule 3.x otherwise we can't install to a vanilla Mule 3.x installation -->
         <configuration>
           <inclusions>
@@ -147,7 +147,7 @@
               <groupId>org.safehaus.jug</groupId>
               <artifactId>jug.osgi</artifactId>
             </exclusion>
-            
+
             <!-- activemq needs to be added manually to MULE_HOME/lib/user if required, see issue 283 -->
             <exclusion>
               <groupId>org.apache.activemq</groupId>
@@ -192,7 +192,7 @@
                 -->
           <classifier>core</classifier>
           <excludes>
-            <exclude>log4j.xml</exclude>
+            <exclude>log4j2.xml</exclude>
           </excludes>
         </configuration>
         <executions>
@@ -214,13 +214,13 @@
               <goal>copy-resources</goal>
             </goals>
             <configuration>
+              <overwrite>true</overwrite>
               <outputDirectory>${project.build.outputDirectory}</outputDirectory>
               <resources>
                 <resource>
                   <directory>src/environment</directory>
                   <includes>
-                    <include>log4j.xml</include>
-                    <include>log4j.dtd</include>
+                    <include>log4j2.xml</include>
                   </includes>
                 </resource>
               </resources>
@@ -237,9 +237,9 @@
   <profiles>
     <profile>
       <id>muleServer</id>
-      <!-- Start mule server with the command 
+      <!-- Start mule server with the command
              mvn -PmuleServer
-             or 
+             or
              mvn -PmuleServer -Dexec.args="${artifaceId}-config.xml
             if you want to override the default config-file -->
       <build>
