@@ -14,8 +14,8 @@
 			and rollover-strategy to mimic the behaviour of the log4j-1.2
 			RollingFileAppender. Should not break scripts used for archiving. -->
 		<RollingRandomAccessFile name="RollingRandomAccessFile"
-				fileName="${log.dir}/mule-app-GetAggregatedCareContact-teststub.log"
-				filePattern="${log.dir}/mule-app-GetAggregatedCareContact-teststub.log.%i">
+				fileName="${log.dir}/mule-app-GetAggregatedCareContacts-v1-teststub.log"
+				filePattern="${log.dir}/mule-app-GetAggregatedCareContacts-v1-teststub.log.%i">
 			<PatternLayout>
 				<Pattern>%d %-5p [%t] %-30c - %m%n</Pattern>
 			</PatternLayout>
@@ -24,7 +24,7 @@
 				<SizeBasedTriggeringPolicy size="10 MB"/>
 			</Policies>
 			<DefaultRolloverStrategy fileIndex="min" max="5"/>
-		</RollingRandomAccessFile>		
+		</RollingRandomAccessFile>
 	</Appenders>
 
 	<!-- Log levels: {OFF, FATAL, ERROR, WARN, INFO, DEBUG, TRACE, ALL}
@@ -48,7 +48,7 @@
 
 
 		<AsyncLogger name="se.skltp.agp" level="INFO"/>
-		<AsyncLogger name="se.skltp.aggregatingservices.riv.clinicalprocess.logistics.logistics.getaggregatedcarecontact" level="INFO"/>
+		<AsyncLogger name="se.skltp.aggregatingservices.riv.clinicalprocess.logistics.logistics.getaggregatedcarecontactsv1" level="INFO"/>
 		<!-- Message logging using soi-toolkit LogTransformer class -->
 		<AsyncLogger name="org.soitoolkit.commons.mule.messageLogger" level="INFO"/>
 
