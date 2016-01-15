@@ -8,21 +8,21 @@
 
 # PingForConfiguration
 mvn gatling:execute -PPingForConfiguration -DserviceLowercase=getaggregatedcarecontacts
-mvn gatling:execute -PPingForConfiguration -DbaseUrl=http://ine-dit-app02.sth.basefarm.net:9002/agp/getaggregatedcarecontacts/itintegration/monitoring/PingForConfiguration/1/rivtabp21 -DserviceLowercase=getaggregatedcarecontacts
-mvn gatling:execute -PPingForConfiguration -DbaseUrl=http://ine-tit-app02.sth.basefarm.net:9002/agp/getaggregatedcarecontacts/itintegration/monitoring/PingForConfiguration/1/rivtabp21 -DserviceLowercase=getaggregatedcarecontacts
-mvn gatling:execute -PPingForConfiguration -DbaseUrl=http://ine-sit-app03.sth.basefarm.net:9002/agp/getaggregatedcarecontacts/itintegration/monitoring/PingForConfiguration/1/rivtabp21 -DserviceLowercase=getaggregatedcarecontacts
+mvn gatling:execute -PPingForConfiguration -DbaseUrl=http://ine-dit-app02.sth.basefarm.net:9021/agp/getaggregatedcarecontacts/itintegration/monitoring/PingForConfiguration/1/rivtabp21 -DserviceLowercase=getaggregatedcarecontacts
+mvn gatling:execute -PPingForConfiguration -DbaseUrl=http://ine-tit-app02.sth.basefarm.net:9021/agp/getaggregatedcarecontacts/itintegration/monitoring/PingForConfiguration/1/rivtabp21 -DserviceLowercase=getaggregatedcarecontacts
+mvn gatling:execute -PPingForConfiguration -DbaseUrl=http://ine-sit-app03.sth.basefarm.net:9021/agp/getaggregatedcarecontacts/itintegration/monitoring/PingForConfiguration/1/rivtabp21 -DserviceLowercase=getaggregatedcarecontacts
 
 # HappyPath - testDuration in seconds
 mvn gatling:execute -PHappyPath -DtestDuration=7
-mvn gatling:execute -PHappyPath -DbaseUrl=http://ine-tit-app02.sth.basefarm.net:9002/GetAggregatedCareContacts/service/v2 -DtestDuration=7
-mvn gatling:execute -PHappyPath -DbaseUrl=http://ine-tit-app02.sth.basefarm.net:9002/GetAggregatedCareContacts/service/v2 -DnumberOfConcurrentUsers=3
-mvn gatling:execute -PHappyPath -DbaseUrl=http://ine-sit-app03.sth.basefarm.net:9002/GetAggregatedCareContacts/service/v2 -DnumberOfConcurrentUsers=45 -DtestDuration=120
+mvn gatling:execute -PHappyPath -DbaseUrl=http://ine-tit-app02.sth.basefarm.net:9021/GetAggregatedCareContacts/service/v3 -DtestDuration=7
+mvn gatling:execute -PHappyPath -DbaseUrl=http://ine-tit-app02.sth.basefarm.net:9021/GetAggregatedCareContacts/service/v3 -DnumberOfConcurrentUsers=3
+mvn gatling:execute -PHappyPath -DbaseUrl=http://ine-sit-app03.sth.basefarm.net:9021/GetAggregatedCareContacts/service/v3 -DnumberOfConcurrentUsers=45 -DtestDuration=120
 
 # Patients - testDuration in minutes
 mvn gatling:execute -PPatients -DtestDuration=1
-mvn gatling:execute -PPatients -DbaseUrl=http://ine-tit-app02.sth.basefarm.net:9002/GetAggregatedCareContacts/service/v2 -DnumberOfConcurrentUsers=4 -DtestDuration=60
-mvn gatling:execute -PPatients -DbaseUrl=http://ine-tit-app02.sth.basefarm.net:9002/GetAggregatedCareContacts/service/v2 -DpatientsFileName=patients-override.csv
-mvn gatling:execute -PPatients -DbaseUrl=http://ine-sit-app03.sth.basefarm.net:9002/GetAggregatedCareContacts/service/v2 -DtestDuration=720
+mvn gatling:execute -PPatients -DbaseUrl=http://ine-tit-app02.sth.basefarm.net:9021/GetAggregatedCareContacts/service/v3 -DnumberOfConcurrentUsers=4 -DtestDuration=60
+mvn gatling:execute -PPatients -DbaseUrl=http://ine-tit-app02.sth.basefarm.net:9021/GetAggregatedCareContacts/service/v3 -DpatientsFileName=patients-override.csv
+mvn gatling:execute -PPatients -DbaseUrl=http://ine-sit-app03.sth.basefarm.net:9021/GetAggregatedCareContacts/service/v3 -DtestDuration=720
 
 -->
 
