@@ -6,8 +6,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.soitoolkit.commons.mule.jaxb.JaxbUtil;
 
+import riv.clinicalprocess.logistics.logistics.enums.v3.ResultCodeEnum;
 import riv.clinicalprocess.logistics.logistics.getcarecontactsresponder.v3.GetCareContactsResponseType;
 import riv.clinicalprocess.logistics.logistics.getcarecontactsresponder.v3.ObjectFactory;
+import riv.clinicalprocess.logistics.logistics.v3.ResultType;
 import se.skltp.agp.riv.interoperability.headers.v1.ProcessingStatusType;
 import se.skltp.agp.service.api.QueryObject;
 import se.skltp.agp.service.api.ResponseListFactory;
@@ -27,6 +29,10 @@ public class ResponseListFactoryImpl implements ResponseListFactory {
             aggregatedResponse.getCareContact().addAll(response.getCareContact());
         }
 
+        aggregatedResponse.setResult(new ResultType());
+        aggregatedResponse.getResult().setResultCode(ResultCodeEnum.INFO);
+        aggregatedResponse.getResult().setLogId("NA");
+        
         if (log.isInfoEnabled()) {
             String subjectOfCareId = queryObject.getFindContent().getRegisteredResidentIdentification();
             log.info("Returning {} aggregated care contact for subject of care id {}", aggregatedResponse.getCareContact().size() ,subjectOfCareId);
