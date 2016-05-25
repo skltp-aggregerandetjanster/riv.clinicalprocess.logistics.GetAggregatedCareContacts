@@ -70,7 +70,7 @@ public class CareContactIntegrationTest extends AbstractAggregateIntegrationTest
                 "teststub-non-default-services/tak-teststub-service.xml";
 
     }
-
+    
     /**
      * Perform a test that is expected to return zero hits
      */
@@ -148,7 +148,7 @@ public class CareContactIntegrationTest extends AbstractAggregateIntegrationTest
     }
 
     //	TODO: Mule EE dependency
-    //  @Test
+    //@Test
     public void test_ok_caching() {
         String registeredResidentId   = TEST_RR_ID_ONE_HIT;
         long   expectedProcessingTime = getTestDb().getProcessingTime(TEST_LOGICAL_ADDRESS_1);
