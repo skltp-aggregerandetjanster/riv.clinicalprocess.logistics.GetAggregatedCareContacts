@@ -32,7 +32,7 @@
 		<AsyncLogger name="org.soitoolkit.commons" level="INFO"/>
 
 
-		<AsyncLogger name="se.skltp.agp" level="INFO"/>
+		<AsyncLogger name="se.skltp.agp" level="DEBUG"/>
 		<AsyncLogger name="se.skltp.aggregatingservices.riv.clinicalprocess.logistics.logistics.getaggregatedcarecontact" level="INFO"/>
 		<!-- Message logging using soi-toolkit LogTransformer class -->
 		<AsyncLogger name="org.soitoolkit.commons.mule.messageLogger" level="INFO"/>

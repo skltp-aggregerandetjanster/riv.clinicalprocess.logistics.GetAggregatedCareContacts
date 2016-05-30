@@ -11,7 +11,7 @@
 
   <artifactId>GetAggregatedCareContacts-teststub</artifactId>
   <packaging>mule</packaging>
-  <name>GetAggregatedCareContacts-v1-teststub</name>
+  <name>GetAggregatedCareContacts-teststub</name>
 
   <dependencies>
 	  <!-- dependencies to the integration component that contains the services to stub -->
@@ -67,7 +67,6 @@
         <extensions>true</extensions>
                 <!-- Include mule-dependencies that doesn't come with Mule 3.x otherwise we can't install to a vanilla Mule 3.x installation -->
         <configuration>
-          <appName>${project.name}-${project.version}</appName>
           <inclusions>
             <inclusion>
               <groupId>org.mule.modules</groupId>

@@ -11,7 +11,7 @@
 
   <artifactId>GetAggregatedCareContacts</artifactId>
   <packaging>mule</packaging>
-  <name>GetAggregatedCareContacts-v1</name>
+  <name>GetAggregatedCareContacts</name>
 
   <pluginRepositories>
     <pluginRepository>
@@ -106,7 +106,6 @@
 
         <!-- Include mule-dependencies that don't come with Mule 3.x otherwise we can't install to a vanilla Mule 3.x installation -->
         <configuration>
-          <appName>${project.name}-${project.version}</appName>
           <inclusions>
             <inclusion>
               <groupId>org.mule.modules</groupId>
