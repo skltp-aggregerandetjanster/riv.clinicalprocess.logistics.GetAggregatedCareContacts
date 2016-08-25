@@ -53,12 +53,6 @@ public class CareContactIntegrationTest extends AbstractAggregateIntegrationTest
     private static final String EXPECTED_ERR_INVALID_ID_MSG = "Invalid Id: " + TEST_RR_ID_FAULT_INVALID_ID;;
     private static final String DEFAULT_SERVICE_ADDRESS = getAddress("SERVICE_INBOUND_URL");
 
-    @Before
-    public void loadTakCache() throws Exception {
-        final TakCacheBean takCache = (TakCacheBean) muleContext.getRegistry().lookupObject("takCacheBean");
-        takCache.updateCache();
-    }
-    
     protected String getConfigResources() {
         return
                 "soitoolkit-mule-jms-connector-activemq-embedded.xml," +
@@ -70,6 +64,13 @@ public class CareContactIntegrationTest extends AbstractAggregateIntegrationTest
                 "teststub-non-default-services/tak-teststub-service.xml";
 
     }
+    
+    @Before
+    public void loadTakCache() throws Exception {
+    	final TakCacheBean takCache = (TakCacheBean) muleContext.getRegistry().lookupObject("takCacheBean");
+    	takCache.updateCache();
+    }
+  
 
     /**
      * Perform a test that is expected to return zero hits
@@ -148,7 +149,7 @@ public class CareContactIntegrationTest extends AbstractAggregateIntegrationTest
     }
 
     //	TODO: Mule EE dependency
-    //  @Test
+    //@Test
     public void test_ok_caching() {
         String registeredResidentId   = TEST_RR_ID_ONE_HIT;
         long   expectedProcessingTime = getTestDb().getProcessingTime(TEST_LOGICAL_ADDRESS_1);
