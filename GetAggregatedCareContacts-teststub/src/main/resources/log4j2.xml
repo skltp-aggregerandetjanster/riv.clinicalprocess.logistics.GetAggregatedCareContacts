@@ -14,8 +14,8 @@
 			and rollover-strategy to mimic the behaviour of the log4j-1.2
 			RollingFileAppender. Should not break scripts used for archiving. -->
 		<RollingRandomAccessFile name="RollingRandomAccessFile"
-				fileName="${log.dir}/mule-app-GetAggregatedCareContact-teststub.log"
-				filePattern="${log.dir}/mule-app-GetAggregatedCareContact-teststub.log.%i">
+				fileName="${log.dir}/mule-app-GetAggregatedCareContact-v2-teststub.log"
+				filePattern="${log.dir}/mule-app-GetAggregatedCareContact-v2-teststub.log.%i">
 			<PatternLayout>
 				<Pattern>%d %-5p [%t] %-30c - %m%n</Pattern>
 			</PatternLayout>
