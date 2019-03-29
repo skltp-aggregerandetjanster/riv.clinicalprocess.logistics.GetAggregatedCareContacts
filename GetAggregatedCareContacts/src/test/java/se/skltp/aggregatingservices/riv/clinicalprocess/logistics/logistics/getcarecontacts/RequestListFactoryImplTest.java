@@ -14,7 +14,6 @@ import org.mockito.Mockito;
 import riv.clinicalprocess.logistics.logistics.getcarecontactsresponder.v2.GetCareContactsType;
 import riv.clinicalprocess.logistics.logistics.v2.DatePeriodType;
 import riv.clinicalprocess.logistics.logistics.v2.PersonIdType;
-import se.skltp.agp.cache.TakCacheBean;
 import se.skltp.agp.riv.itintegration.engagementindex.findcontentresponder.v1.FindContentResponseType;
 import se.skltp.agp.riv.itintegration.engagementindex.findcontentresponder.v1.FindContentType;
 import se.skltp.agp.riv.itintegration.engagementindex.v1.EngagementType;
