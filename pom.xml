@@ -18,7 +18,7 @@ DON'T CHANGE THE CONTENT OF THIS COMMENT UNLESS YOU REALLY KNOW WHAT YOU ARE DOI
 
   	<groupId>se.skltp.aggregatingservices.riv.clinicalprocess.logistics.logistics</groupId>
 		<artifactId>GetAggregatedCareContacts-parent</artifactId>
-		<version>1.3.3-RC3-SNAPSHOT</version>
+		<version>1.3.3</version>
     <packaging>pom</packaging>
     <name>GetAggregatedCareContacts-parent</name>
 
@@ -31,7 +31,7 @@ DON'T CHANGE THE CONTENT OF THIS COMMENT UNLESS YOU REALLY KNOW WHAT YOU ARE DOI
 			<url>https://github.com/skltp-aggregerandetjanster/riv.clinicalprocess.logistics.logistics.GetAggregatedCareContacts</url>
 			<connection>scm:git:https://github.com:443/skltp-aggregerandetjanster/riv.clinicalprocess.logistics.logistics.GetAggregatedCareContacts.git</connection>
 			<developerConnection>scm:git:https://github.com:443/skltp-aggregerandetjanster/riv.clinicalprocess.logistics.logistics.GetAggregatedCareContacts.git</developerConnection>
-			<tag>HEAD</tag>
+			<tag>v1.3.3</tag>
 		</scm>
 
     <modules>
