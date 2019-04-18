@@ -35,7 +35,7 @@ mvn gatling:execute -PPatients -Dsenderid=SE5565594230-BCQ -DbaseUrl=http://ine-
   <properties>
     <gatling.version>2.1.7</gatling.version>
     <gatling-maven-plugin.version>2.1.7</gatling-maven-plugin.version>
-      <skltp.agp.test.non.functional.version>2.3.4-RC1</skltp.agp.test.non.functional.version>
+      <skltp.agp.test.non.functional.version>2.3.4</skltp.agp.test.non.functional.version>
   </properties>
 
   <dependencies>
