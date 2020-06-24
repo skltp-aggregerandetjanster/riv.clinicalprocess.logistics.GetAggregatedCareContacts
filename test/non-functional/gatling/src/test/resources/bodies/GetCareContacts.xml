@@ -1,8 +1,8 @@
 <soapenv:Envelope 
    xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" 
    xmlns:urn="urn:riv:itintegration:registry:1" 
-   xmlns:urn1="urn:riv:clinicalprocess:logistics:logistics:GetCareContactsResponder:3" 
-   xmlns:urn2="urn:riv:clinicalprocess:logistics:logistics:3">
+   xmlns:urn1="urn:riv:clinicalprocess:logistics:logistics:GetCareContactsResponder:2" 
+   xmlns:urn2="urn:riv:clinicalprocess:logistics:logistics:2">
    <soapenv:Header>
       <urn:LogicalAddress>5565594230</urn:LogicalAddress>
    </soapenv:Header>
