@@ -11,7 +11,7 @@
 
   	<groupId>se.skltp.aggregatingservices.riv.clinicalprocess.logistics.logistics</groupId>
 		<artifactId>GetAggregatedCareContacts-v2</artifactId>
-		<version>1.0.0-SNAPSHOT</version>
+		<version>3.0.0-RC1</version>
     <packaging>pom</packaging>
     <name>GetAggregatedCareContacts-v2</name>
 
@@ -24,7 +24,7 @@
       <url>https://github.com/skltp-aggregerandetjanster/riv.clinicalprocess.logistics.logistics.GetAggregatedCareContacts</url>
       <connection>scm:git:https://github.com:443/skltp-aggregerandetjanster/riv.clinicalprocess.logistics.logistics.GetAggregatedCareContacts.git</connection>
       <developerConnection>scm:git:https://github.com:443/skltp-aggregerandetjanster/riv.clinicalprocess.logistics.logistics.GetAggregatedCareContacts.git</developerConnection>
-      <tag>HEAD</tag>
+      <tag>GetAggregatedCareContacts-v2-3.0.0-RC1</tag>
   	</scm>
 
   <modules>  <module>GetAggregatedCareContacts-v2-schemas</module>
