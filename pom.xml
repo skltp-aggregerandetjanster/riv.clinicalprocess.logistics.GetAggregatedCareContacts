@@ -11,7 +11,7 @@
 
   	<groupId>se.skltp.aggregatingservices.riv.clinicalprocess.logistics.logistics</groupId>
 		<artifactId>GetAggregatedCareContacts-v2</artifactId>
-		<version>3.0.1-SNAPSHOT</version>
+		<version>3.1.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>GetAggregatedCareContacts-v2</name>
 
