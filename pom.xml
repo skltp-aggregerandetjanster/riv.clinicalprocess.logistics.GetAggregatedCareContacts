@@ -6,17 +6,17 @@
   <parent>
     <artifactId>agp-parent</artifactId>
     <groupId>se.skltp.agp</groupId>
-    <version>3.0.0-RC4</version>
+    <version>3.0.0</version>
   </parent>
 
   	<groupId>se.skltp.aggregatingservices.riv.clinicalprocess.logistics.logistics</groupId>
 		<artifactId>GetAggregatedCareContacts-v2</artifactId>
-		<version>3.0.0</version>
+		<version>3.1.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>GetAggregatedCareContacts-v2</name>
 
   <properties>
-    <agp-parent.version>3.0.0-RC4</agp-parent.version>
+    <agp-parent.version>3.0.0</agp-parent.version>
     <apache-cfx.version>3.2.7</apache-cfx.version>
   </properties>
 
@@ -56,7 +56,7 @@
       <url>https://github.com/skltp-aggregerandetjanster/riv.clinicalprocess.logistics.logistics.GetAggregatedCareContacts</url>
       <connection>scm:git:https://github.com:443/skltp-aggregerandetjanster/riv.clinicalprocess.logistics.logistics.GetAggregatedCareContacts.git</connection>
       <developerConnection>scm:git:https://github.com:443/skltp-aggregerandetjanster/riv.clinicalprocess.logistics.logistics.GetAggregatedCareContacts.git</developerConnection>
-      <tag>v3.0.0</tag>
+      <tag>HEAD</tag>
   	</scm>
 
   <modules>
